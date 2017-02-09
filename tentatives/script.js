@@ -7,13 +7,13 @@ function Jeu() {
 	this.canvasCtx;
 
 	this.initialiser = function() {
+		console.log("Initialisation Jeu");
+
 		this.partieCourante = new Partie();
 		this.gravite = 9.8;
 		this.highscore = 0;
 		this.canvas = document.querySelector('#canvas');
 		this.canvasCtx = this.canvas.getContext('2d');
-
-		console.log("Jeu initialisé");
 	}
 
 	this.lancer = function() {
@@ -35,10 +35,14 @@ function Partie() {
 	this.dinosaures = [];
 
 	this.initialiser = function(dinosaures) {
+		console.log("Initialisation Partie");
+
 		this.vitesse = 6; //vitesse de départ
 		this.dinosaures = dinosaures;
 
-		console.log("Partie initialisée");
+		dinosaures.forEach(function(dino) {
+			dino.initialiser();
+		});
 	}
 
 	this.lancer = function() {
@@ -55,6 +59,13 @@ function Dinosaure() {
 	this.etat;
 	this.sprite;
 
+	this.initialiser = function() {
+		console.log("Initialisation Dinosaure");
+
+		this.sprite = new Image();
+		this.sprite.src = 'sprites/trex_stand.png';
+	}
+
 	this.sauter = function() {
 
 	}
@@ -70,13 +81,22 @@ function Obstacle() {
 	this.position;
 }
 
+var mon_image = new Image();
+mon_image.src = "sprites/trex_stand.png";
+
 // Main
 window.onload = function() {
-    var jeu = new Jeu();
+    var canvas = document.getElementById('canvas');
+    console.log(canvas);
 
-    
+	var context = canvas.getContext('2d');
+    console.log(context);
 
-
-	jeu.initialiser();
-	jeu.lancer();
+    for(var i=0; i<1000; i++)
+    {
+    	context.clearRect(0, 0, this.canvas.width, this.canvas.width);
+    	context.drawImage(mon_image, i, 80);
+    }
+	
+	console.log(mon_image);
 };
