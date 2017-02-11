@@ -18,9 +18,9 @@ function Game() {
 		}
 	}
 
-	this.run = function() {
+	this.update = function() {
 		this.dinosaures.forEach(function(d) {
-			d.run();
+			d.update();
 		});
 	}
 

@@ -1,19 +1,44 @@
 "use strict";
 
-var runner;
+var tRex;
+var obstacles = [];
 
 function setup() {
 	createCanvas(600,150);
-
-	runner = new Runner();
-	runner.init();
-
+	
+	tRex = new Dinosaure();
+	obstacles.push(new Obstacle());
 }
 
 function draw() {
-	//rect(300,100,100,100);
-	runner.currentGame.run();
-	runner.currentGame.display();
+	background(0);
+	fill(255);
+	line(10,10, 110, 110);
+
+	if(frameCount % 80 == 0) //toutes les X frames
+	{
+		obstacles.push(new Obstacle());
+	}
+
+	for (var i = obstacles.length -1; i > 0; i--)
+	{
+		obstacles[i].update();
+		obstacles[i].show();
+
+		if(obstacles[i].hits(tRex)) {
+			console.log('HIT');
+		}
+
+		if(obstacles[i].x < -20) {
+			obstacles.splice(i, 1);
+		}
+	}
+
+	tRex.update();
+	tRex.show();
 }
 
-
+function keyPressed()
+{
+	tRex.jump();
+}
