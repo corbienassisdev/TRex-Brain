@@ -1,13 +1,18 @@
 function Dinosaure() {
-	this.y = 85;
-	this.x = 60;
+	this.y = 93;
+	this.x = 18;
 
-	this.height = 40;
-	this.width = 40;
+	this.height = 47;
+	this.width = 44;
+
+	this.yGround = 93;
 
 	//gestion de la gravité
 	this.gravity = 0.6;
 	this.velocity = 0;
+
+	this.jumping = false;
+
 
 	this.show = function() {
 		fill(255);
@@ -20,16 +25,25 @@ function Dinosaure() {
 		this.velocity += this.gravity;
 
 		//blocage sol
-		if(this.y > 85)
-		{
-			this.y = 85;
+		if(this.y > this.yGround) {
+			this.y = this.yGround;
 			this.velocity = 0;
+		}
+
+		//fin du saut
+		if(this.jumping && this.y == this.yGround) {
+			this.jumping = false;
+		}
+
+		//check si on a la touche UP d'appuyée
+		if(!this.jumping && keyIsDown(UP_ARROW)) {
+			this.jumping = true;
+			this.velocity = -10.5;
 		}
 	}
 
-
 	this.jump = function() {
-		this.velocity += -10;
+		this.velocity += -10 ;
 	}
 }
 

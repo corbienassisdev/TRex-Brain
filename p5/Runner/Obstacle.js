@@ -1,10 +1,10 @@
 function Obstacle() {
 
-	this.width = 20;
-	this.height = 40;
+	this.width = 23;
+	this.height = 46;
 
 	this.x = width;
-	this.y = 85;
+	this.y = 93;
 	this.speed = 6;
 
 	this.hightlight = false;

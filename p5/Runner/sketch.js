@@ -12,8 +12,9 @@ function setup() {
 
 function draw() {
 	background(0);
-	fill(255);
-	line(10,10, 110, 110);
+
+	stroke(255);
+	line(0, 130, width, 130);
 
 	if(frameCount % 80 == 0) //toutes les X frames
 	{
@@ -38,7 +39,7 @@ function draw() {
 	tRex.show();
 }
 
-function keyPressed()
+/*function keyPressed()
 {
 	tRex.jump();
-}
+}*/
