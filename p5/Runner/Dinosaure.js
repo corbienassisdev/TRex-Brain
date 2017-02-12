@@ -12,7 +12,7 @@ function Dinosaure() {
 	this.velocity = 0;
 
 	this.jumping = false;
-
+	this.ducking = false;
 
 	this.show = function() {
 		fill(255);
@@ -35,10 +35,28 @@ function Dinosaure() {
 			this.jumping = false;
 		}
 
-		//check si on a la touche UP d'appuyée
+		//check saut
 		if(!this.jumping && keyIsDown(UP_ARROW)) {
 			this.jumping = true;
 			this.velocity = -10.5;
+		}
+
+		//check accroupir
+		if(keyIsDown(DOWN_ARROW)) {
+			this.ducking = true;
+		} else {
+			this.ducking  = false;
+		}
+
+		if(this.ducking) {
+			if(this.y == 93) { //si le tRex est debout sur le sol
+				this.y = 93 + 47 - 30;
+				this.height = 30;
+			} else { //si le tRex est en l'air
+				this.velocity += 1;
+			}
+		} else {
+			this.height = 47;
 		}
 	}
 
