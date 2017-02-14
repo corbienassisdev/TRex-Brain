@@ -5,13 +5,12 @@ function Obstacle() {
 
 	this.x = width;
 	this.y = 93;
-	this.speed = 6;
-}   
+}
 
 
-Obstacle.prototype.update = function() {
+Obstacle.prototype.update = function(speed) {
 
-	this.x -= this.speed;
+	this.x -= speed;
 };
 
 

@@ -5,15 +5,14 @@ function Cloud() {
 
 	this.x = width;
 	this.y = 30;
-	this.speed = 1;
 
 	this.hightlight = false;
 }
 
 
-Cloud.prototype.update = function() {
+Cloud.prototype.update = function(speed) {
 
-	this.x -= this.speed;
+	this.x -= speed / 8;
 };
 
 

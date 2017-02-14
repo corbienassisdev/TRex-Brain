@@ -23,7 +23,7 @@ function draw() {
 			game.over();
 	}
 
-	console.log(game.obstacles.length + "  " + game.clouds.length);
+	console.log(textWidth(game.highscore));
 }
 
 
