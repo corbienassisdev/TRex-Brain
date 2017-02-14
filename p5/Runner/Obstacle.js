@@ -6,8 +6,6 @@ function Obstacle() {
 	this.x = width;
 	this.y = 93;
 	this.speed = 6;
-
-	this.hightlight = false;
 }   
 
 
@@ -30,9 +28,8 @@ Obstacle.prototype.hits = function(tRex) {
 	
 	if (tRex.x < this.x + this.width && tRex.x + tRex.width > this.x &&
 		tRex.y < this.y + this.height && tRex.height + tRex.y > this.y) {
-	    this.hightlight = true;
 	    return true;
 	}
-	this.hightlight = false;
+	
 	return false;
 };

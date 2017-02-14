@@ -28,14 +28,13 @@ Dinosaure.prototype.update = function() {
 	}
 
 	//fin du saut
-	if(this.jumping && this.y == this.yGround) {
+	if(this.jumping && this.y >= this.yGround) {
 		this.jumping = false;
 	}
 
 	//check saut
 	if(!this.jumping && (keyIsDown(UP_ARROW) || keyIsDown(32))) { //key code 32 = spacebar
-		this.jumping = true;
-		this.velocity = -10.5;
+		game.tRex.jump();
 	}
 
 	//check accroupir
@@ -46,8 +45,8 @@ Dinosaure.prototype.update = function() {
 	}
 
 	if(this.ducking) {
-		if(this.y == 93) { //si le tRex est debout sur le sol
-			this.y = 93 + 47 - 30;
+		if(this.y == this.yGround) { //si le tRex est debout sur le sol
+			this.y = this.yGround + 47 - 30;
 			this.height = 30;
 		} else { //si le tRex est en l'air
 			this.velocity += 1;
@@ -62,4 +61,13 @@ Dinosaure.prototype.show = function() {
 
 	fill(255);
 	rect(this.x, this.y, this.width, this.height);
+};
+
+
+Dinosaure.prototype.jump = function() {
+
+	if(!this.jumping) {
+		this.jumping = true;
+		this.velocity = -10.5;
+	} 
 };
