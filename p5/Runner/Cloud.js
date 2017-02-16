@@ -4,9 +4,7 @@ function Cloud() {
 	this.height = 13;
 
 	this.x = width;
-	this.y = 30;
-
-	this.hightlight = false;
+	this.y = floor(random(10, 60));
 }
 
 

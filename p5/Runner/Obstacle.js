@@ -17,8 +17,6 @@ Obstacle.prototype.update = function(speed) {
 Obstacle.prototype.show = function() {
 	
 	fill(255);
-	if(this.hightlight)
-		fill(255, 0, 0);
 	rect(this.x, this.y, this.width, this.height);
 };
 
@@ -31,4 +29,10 @@ Obstacle.prototype.hits = function(tRex) {
 	}
 	
 	return false;
+};
+
+
+Obstacle.type = {
+	CACTUS: 'CACTUS',
+	PTERODACTYL: 'PTERODACTYL'
 };

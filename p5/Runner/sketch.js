@@ -22,8 +22,6 @@ function draw() {
 		case Game.status.OVER:
 			game.over();
 	}
-
-	console.log(textWidth(game.highscore));
 }
 
 

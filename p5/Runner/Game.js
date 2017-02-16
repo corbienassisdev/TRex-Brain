@@ -4,10 +4,13 @@ function Game() {
 	this.horizon = new Horizon();
 	this.obstacles = [];
 	this.clouds = [];
+	this.speed = 6;
 	this.score = 0;
 	this.highscore = 0;
 	this.status = Game.status.WAITING;
-	this.speed = 6;
+
+	this.nextObstacleFrameCount = floor(random(45, 120));
+	this.nextCloudFrameCount = floor(random(100, 800));
 }
 
 
@@ -43,6 +46,7 @@ Game.prototype.reset = function() {
 	this.obstacles = [];
 	this.clouds = [];
 	this.score = 0;
+	this.speed = 6;
 };
 
 
@@ -54,13 +58,18 @@ Game.prototype.start = function() {
 
 Game.prototype.update = function() {
 
-	this.score++;
+	if(frameCount % 5 == 0)
+		this.score++;
 
-	if(frameCount % 80 == 0) { //toutes les X frames
+	if(this.nextObstacleFrameCount == frameCount) {
+		this.lastObstacleFrameCount = frameCount;
+		this.nextObstacleFrameCount = this.lastObstacleFrameCount + floor(random(45, 120));
 		this.obstacles.push(new Obstacle());
 	}
 
-	if(frameCount % 300 == 0) {
+	if(this.nextCloudFrameCount == frameCount) {
+		this.lastCloudFrameCount = frameCount;
+		this.nextCloudFrameCount = this.lastCloudFrameCount + floor(random(100, 800));
 		this.clouds.push(new Cloud());
 	}
 
@@ -74,6 +83,7 @@ Game.prototype.update = function() {
 
 		if(this.obstacles[i].x < -20) {
 			this.obstacles.splice(i, 1);
+			this.speed = this.speed * 1.0025; //on augmente la vitesse
 		}
 	}
 
@@ -94,12 +104,12 @@ Game.prototype.show = function() {
 	background(0);
 	this.horizon.show();
 
-	for (var i = this.obstacles.length -1; i > 0; i--) {
-		this.obstacles[i].show();
-	}
-
 	for (var i = this.clouds.length -1; i > 0; i--) {
 		this.clouds[i].show();
+	}
+
+	for (var i = this.obstacles.length -1; i > 0; i--) {
+		this.obstacles[i].show();
 	}
 
 	this.tRex.show();
