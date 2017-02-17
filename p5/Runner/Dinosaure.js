@@ -1,4 +1,4 @@
-function Dinosaure() {
+function Dinosaure(sprites) {
 	this.y = 93;
 	this.x = 18;
 
@@ -13,6 +13,8 @@ function Dinosaure() {
 
 	this.jumping = false;
 	this.ducking = false;
+
+	this.sprites = sprites;
 }
 
 
@@ -59,8 +61,9 @@ Dinosaure.prototype.update = function() {
 
 Dinosaure.prototype.show = function() {
 
-	fill(255);
-	rect(this.x, this.y, this.width, this.height);
+	//fill(255);
+	//rect(this.x, this.y, this.width, this.height);
+	image(this.sprites['trex.stand'], this.x, this.y);
 };
 
 
@@ -69,5 +72,14 @@ Dinosaure.prototype.jump = function() {
 	if(!this.jumping) {
 		this.jumping = true;
 		this.velocity = -10.5;
-	} 
+	}
+};
+
+
+Dinosaure.status = {
+    CRASHED: 'CRASHED',
+    DUCKING: 'DUCKING',
+    JUMPING: 'JUMPING',
+    RUNNING: 'RUNNING',
+    WAITING: 'WAITING'
 };

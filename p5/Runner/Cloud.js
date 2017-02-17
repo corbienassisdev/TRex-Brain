@@ -1,10 +1,12 @@
-function Cloud() {
+function Cloud(sprites) {
 	
 	this.width = 46;
 	this.height = 13;
 
 	this.x = width;
 	this.y = floor(random(10, 60));
+
+	this.sprite = sprites['cloud'];
 }
 
 
@@ -16,6 +18,5 @@ Cloud.prototype.update = function(speed) {
 
 Cloud.prototype.show = function() {
 
-	fill(100,100,100);
-	rect(this.x, this.y, this.width, this.height);
+	image(this.sprite, this.x, this.y);
 };

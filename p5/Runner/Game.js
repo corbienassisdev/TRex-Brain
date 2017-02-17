@@ -1,6 +1,7 @@
-function Game() {
+function Game(sprites) {
 	
-	this.tRex = new Dinosaure();
+	this.sprites = sprites;
+	this.tRex = new Dinosaure(sprites);
 	this.horizon = new Horizon();
 	this.obstacles = [];
 	this.clouds = [];
@@ -9,7 +10,7 @@ function Game() {
 	this.highscore = 0;
 	this.status = Game.status.WAITING;
 
-	this.nextObstacleFrameCount = floor(random(45, 120));
+	this.nextObstacleFrameCount = floor(random(45, 130));
 	this.nextCloudFrameCount = floor(random(100, 800));
 }
 
@@ -29,8 +30,10 @@ Game.prototype.wait = function() {
 
 Game.prototype.over = function() {
 	fill(255);
-	rect((width - 191) / 2, 30, 191, 20);
-	rect((width - 34) / 2, 70, 34, 30);
+	image(this.sprites['over.text'], (width - 191) / 2, 30);
+	image(this.sprites['over.replay'], (width - 34) / 2, 70);
+	//rect((width - 191) / 2, 30, 191, 20);
+	//rect((width - 34) / 2, 70, 34, 30);
 	if(this.highscore != 0) {
 		var string = "HI " + this.highscore;
 		text(string, width - (textWidth(string) + textWidth(this.score) + 30), 20);
@@ -41,7 +44,7 @@ Game.prototype.over = function() {
 
 
 Game.prototype.reset = function() {
-	this.tRex = new Dinosaure();
+	this.tRex = new Dinosaure(this.sprites);
 	this.horizon = new Horizon();
 	this.obstacles = [];
 	this.clouds = [];
@@ -58,19 +61,19 @@ Game.prototype.start = function() {
 
 Game.prototype.update = function() {
 
-	if(frameCount % 5 == 0)
+	if(frameCount % 8 == 0)
 		this.score++;
 
 	if(this.nextObstacleFrameCount == frameCount) {
 		this.lastObstacleFrameCount = frameCount;
-		this.nextObstacleFrameCount = this.lastObstacleFrameCount + floor(random(45, 120));
+		this.nextObstacleFrameCount = this.lastObstacleFrameCount + floor(random(45, 130));
 		this.obstacles.push(new Obstacle());
 	}
 
 	if(this.nextCloudFrameCount == frameCount) {
 		this.lastCloudFrameCount = frameCount;
 		this.nextCloudFrameCount = this.lastCloudFrameCount + floor(random(100, 800));
-		this.clouds.push(new Cloud());
+		this.clouds.push(new Cloud(this.sprites));
 	}
 
 	for (var i = this.obstacles.length - 1; i > 0; i--) {
