@@ -36,6 +36,7 @@ function setup() {
 
 
 function draw() {
+	noSmooth();
 	
 	switch(game.status) {
 		case Game.status.WAITING:
