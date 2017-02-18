@@ -6,11 +6,14 @@ var sprites = new Object();
 
 function preload() {
 
+	sprites['horizon'] = loadImage('sprites/horizon.png');
 	sprites['cloud'] = loadImage('sprites/cloud.png');
-	sprites['trex.dead'] = loadImage('sprites/trex_dead.png');
+	sprites['trex.stand'] = loadImage('sprites/trex_stand.png');
 	sprites['trex.run.1'] = loadImage('sprites/trex_run_1.png');
 	sprites['trex.run.2'] = loadImage('sprites/trex_run_2.png');
-	sprites['trex.stand'] = loadImage('sprites/trex_stand.png');
+	sprites['trex.duck.1'] = loadImage('sprites/trex_duck_1.png');
+	sprites['trex.duck.2'] = loadImage('sprites/trex_duck_2.png');
+	sprites['trex.crashed'] = loadImage('sprites/trex_crashed.png');
 	sprites['over.replay'] = loadImage('sprites/bouton_replay.png');
 	sprites['over.text'] = loadImage('sprites/game_over.png');
 } 
@@ -36,6 +39,9 @@ function draw() {
 		case Game.status.OVER:
 			game.over();
 	}
+
+	//console.log(game.tRex.status);
+	console.log(sprites['trex.stand'].width);
 }
 
 

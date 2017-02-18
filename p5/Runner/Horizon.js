@@ -1,14 +1,32 @@
-function Horizon() {
-	
+function Horizon(sprites) {
+
+	this.sprites = sprites;
+
+	this.sprite = sprites['horizon'];
+	this.x = 0;
+	this.y = 130;
+
+	this.spriteBis = sprites['horizon'];
+	this.xBis = 1200;
+	this.yBis = 130;
 }
 
 
-Horizon.prototype.update = function() {
+Horizon.prototype.update = function(speed) {
 
+	if (this.x <= -1800 + 2)
+		this.x = width;
+	
+	if(this.xBis <= -1800 + 2)
+		this.xBis = width;
+
+	this.x -= speed;
+	this.xBis -= speed;
 };
 
 
 Horizon.prototype.show = function() {
-	stroke(255);
-	line(0, 130, width, 130);
+	image(this.sprite, this.x, this.y);
+	image(this.spriteBis, this.xBis, this.yBis);
 };
+

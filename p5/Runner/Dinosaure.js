@@ -1,4 +1,7 @@
 function Dinosaure(sprites) {
+	
+	this.sprites = sprites;
+
 	this.y = 93;
 	this.x = 18;
 
@@ -14,7 +17,9 @@ function Dinosaure(sprites) {
 	this.jumping = false;
 	this.ducking = false;
 
-	this.sprites = sprites;
+	this.sprite;
+
+	this.status = Dinosaure.status.WAITING //pour les sprites
 }
 
 
@@ -48,6 +53,7 @@ Dinosaure.prototype.update = function() {
 
 	if(this.ducking) {
 		if(this.y == this.yGround) { //si le tRex est debout sur le sol
+			this.status = Dinosaure.status.DUCKING;
 			this.y = this.yGround + 47 - 30;
 			this.height = 30;
 		} else { //si le tRex est en l'air
@@ -56,30 +62,54 @@ Dinosaure.prototype.update = function() {
 	} else {
 		this.height = 47;
 	}
+
+	if(!this.jumping && !this.ducking && this.status != Dinosaure.status.CRASHED)
+		this.status = Dinosaure.status.RUNNING;
 };
 
 
 Dinosaure.prototype.show = function() {
-
-	//fill(255);
-	//rect(this.x, this.y, this.width, this.height);
-	image(this.sprites['trex.stand'], this.x, this.y);
+	switch (this.status) {
+		case Dinosaure.status.WAITING:
+			this.sprite = this.sprites['trex.stand'];
+			break;
+		case Dinosaure.status.RUNNING:
+			if (floor(frameCount % 10) < 5) //vrai pour 5 frames puis faux, etc
+				this.sprite = this.sprites['trex.run.1'];
+			else
+				this.sprite = this.sprites['trex.run.2'];
+			break;
+		case Dinosaure.status.DUCKING:
+			if (floor(frameCount % 10) < 5) //vrai pour 5 frames puis faux, etc
+				this.sprite = this.sprites['trex.duck.1'];
+			else
+				this.sprite = this.sprites['trex.duck.2'];
+			break;
+		case Dinosaure.status.JUMPING:
+			this.sprite = this.sprites['trex.stand'];
+			break;
+		case Dinosaure.status.CRASHED:
+			this.sprite = this.sprites['trex.crashed'];
+			break;
+	}
+	image(this.sprite, this.x, this.y);
 };
 
 
 Dinosaure.prototype.jump = function() {
 
 	if(!this.jumping) {
+		this.status = Dinosaure.status.JUMPING;
 		this.jumping = true;
-		this.velocity = -10.5;
+		this.velocity = -10.2;
 	}
 };
 
 
 Dinosaure.status = {
-    CRASHED: 'CRASHED',
+	WAITING: 'WAITING',
+	RUNNING: 'RUNNING',
     DUCKING: 'DUCKING',
     JUMPING: 'JUMPING',
-    RUNNING: 'RUNNING',
-    WAITING: 'WAITING'
+    CRASHED: 'CRASHED'
 };

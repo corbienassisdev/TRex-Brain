@@ -2,7 +2,7 @@ function Game(sprites) {
 	
 	this.sprites = sprites;
 	this.tRex = new Dinosaure(sprites);
-	this.horizon = new Horizon();
+	this.horizon = new Horizon(sprites);
 	this.obstacles = [];
 	this.clouds = [];
 	this.speed = 6;
@@ -16,24 +16,18 @@ function Game(sprites) {
 
 
 Game.prototype.wait = function() {
-	background(0);
 	this.horizon.show();
 	this.tRex.show();
 
-	var scoreString = this.score + "";
-	fill(255);
-	text(this.score, width - (scoreString.length * 6) - 15, 20);
+	text(string, width - (textWidth(string) + textWidth(this.score) + 30), 20)
 
 	noLoop();
 };
 
 
 Game.prototype.over = function() {
-	fill(255);
-	image(this.sprites['over.text'], (width - 191) / 2, 30);
-	image(this.sprites['over.replay'], (width - 34) / 2, 70);
-	//rect((width - 191) / 2, 30, 191, 20);
-	//rect((width - 34) / 2, 70, 34, 30);
+	image(this.sprites['over.text'], 205, 42);
+	image(this.sprites['over.replay'], 282, 75);
 	if(this.highscore != 0) {
 		var string = "HI " + this.highscore;
 		text(string, width - (textWidth(string) + textWidth(this.score) + 30), 20);
@@ -45,9 +39,8 @@ Game.prototype.over = function() {
 
 Game.prototype.reset = function() {
 	this.tRex = new Dinosaure(this.sprites);
-	this.horizon = new Horizon();
+	this.horizon = new Horizon(this.sprites);
 	this.obstacles = [];
-	this.clouds = [];
 	this.score = 0;
 	this.speed = 6;
 };
@@ -55,12 +48,13 @@ Game.prototype.reset = function() {
 
 Game.prototype.start = function() {
 	this.status = Game.status.RUNNING;
+	this.tRex.status = Dinosaure.status.RUNNING;
 	loop();
 };
 
 
 Game.prototype.update = function() {
-
+	
 	if(frameCount % 8 == 0)
 		this.score++;
 
@@ -76,17 +70,19 @@ Game.prototype.update = function() {
 		this.clouds.push(new Cloud(this.sprites));
 	}
 
+	this.horizon.update(this.speed);
+
 	for (var i = this.obstacles.length - 1; i > 0; i--) {
 		this.obstacles[i].update(this.speed);
 
-		if(this.obstacles[i].hits(this.tRex)) { //ca devrait etre dans Dinosaure.js plutot
-			this.end();
-			this.status = Game.status.OVER;
+		if(this.obstacles[i].hits(this.tRex)) { //ca devrait etre dans Dinosaure.js plutôt
+			//this.end();
+			//this.status = Game.status.OVER;
 		}
 
 		if(this.obstacles[i].x < -20) {
 			this.obstacles.splice(i, 1);
-			this.speed = this.speed * 1.0025; //on augmente la vitesse
+			this.speed = this.speed * 1.005; //on augmente la vitesse
 		}
 	}
 
@@ -104,7 +100,8 @@ Game.prototype.update = function() {
 
 Game.prototype.show = function() {
 
-	background(0);
+	clear();
+
 	this.horizon.show();
 
 	for (var i = this.clouds.length -1; i > 0; i--) {
@@ -117,7 +114,6 @@ Game.prototype.show = function() {
 
 	this.tRex.show();
 
-	fill(255);
 	text(this.score, width - textWidth(this.score) - 15, 20);
 
 	if(this.highscore != 0) {
@@ -128,6 +124,9 @@ Game.prototype.show = function() {
 
 
 Game.prototype.end = function() {
+	this.tRex.status = Dinosaure.status.CRASHED; //on affiche le tRex crashé
+	this.tRex.show();
+	
 	if(this.score > this.highscore)
 		this.highscore = this.score;
 };

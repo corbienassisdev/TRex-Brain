@@ -16,7 +16,6 @@ Obstacle.prototype.update = function(speed) {
 
 Obstacle.prototype.show = function() {
 	
-	fill(255);
 	rect(this.x, this.y, this.width, this.height);
 };
 
