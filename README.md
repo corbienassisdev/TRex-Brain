@@ -4,9 +4,8 @@ Recoding the T-Rex game from Chrome browser, to add an AI based on neural networ
 
 #TODO :
 
-*Replace geometric shapes by sprites
-*Get a better scoring
 *Add sounds
+*Add Collision detection pixel by pixel
 
 *Implement AI for the tRex
 *Implements Genetic Aspects

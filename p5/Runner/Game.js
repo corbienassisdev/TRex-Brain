@@ -19,7 +19,7 @@ Game.prototype.wait = function() {
 	this.horizon.show();
 	this.tRex.show();
 
-	text(string, width - (textWidth(string) + textWidth(this.score) + 30), 20)
+	text(this.score, width - (textWidth(this.score) + 15), 20)
 
 	noLoop();
 };
@@ -28,6 +28,7 @@ Game.prototype.wait = function() {
 Game.prototype.over = function() {
 	image(this.sprites['over.text'], 205, 42);
 	image(this.sprites['over.replay'], 282, 75);
+	
 	if(this.highscore != 0) {
 		var string = "HI " + this.highscore;
 		text(string, width - (textWidth(string) + textWidth(this.score) + 30), 20);
@@ -61,7 +62,7 @@ Game.prototype.update = function() {
 	if(this.nextObstacleFrameCount == frameCount) {
 		this.lastObstacleFrameCount = frameCount;
 		this.nextObstacleFrameCount = this.lastObstacleFrameCount + floor(random(45, 130));
-		this.obstacles.push(new Obstacle());
+		this.obstacles.push(new Obstacle(this.sprites));
 	}
 
 	if(this.nextCloudFrameCount == frameCount) {
@@ -76,11 +77,10 @@ Game.prototype.update = function() {
 		this.obstacles[i].update(this.speed);
 
 		if(this.obstacles[i].hits(this.tRex)) { //ca devrait etre dans Dinosaure.js plutôt
-			//this.end();
-			//this.status = Game.status.OVER;
+			this.end();
 		}
 
-		if(this.obstacles[i].x < -20) {
+		if(this.obstacles[i].x < - this.obstacles[i].width) {
 			this.obstacles.splice(i, 1);
 			this.speed = this.speed * 1.005; //on augmente la vitesse
 		}
@@ -124,6 +124,8 @@ Game.prototype.show = function() {
 
 
 Game.prototype.end = function() {
+
+	this.status = Game.status.OVER;
 	this.tRex.status = Dinosaure.status.CRASHED; //on affiche le tRex crashé
 	this.tRex.show();
 	
