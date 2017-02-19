@@ -1,6 +1,7 @@
-function Game(sprites) {
+function Game(sprites, font) {
 	
 	this.sprites = sprites;
+	this.font = font;
 	this.tRex = new Dinosaure(sprites);
 	this.horizon = new Horizon(sprites);
 	this.obstacles = [];
@@ -19,7 +20,7 @@ Game.prototype.wait = function() {
 	this.horizon.show();
 	this.tRex.show();
 
-	text(this.score, width - (textWidth(this.score) + 15), 20)
+	this.showScore();
 
 	noLoop();
 };
@@ -29,10 +30,7 @@ Game.prototype.over = function() {
 	image(this.sprites['over.text'], 205, 42);
 	image(this.sprites['over.replay'], 282, 75);
 	
-	if(this.highscore != 0) {
-		var string = "HI " + this.highscore;
-		text(string, width - (textWidth(string) + textWidth(this.score) + 30), 20);
-	}
+	this.showScore();
 
 	noLoop();
 };
@@ -62,7 +60,7 @@ Game.prototype.update = function() {
 	if(this.nextObstacleFrameCount == frameCount) {
 		this.lastObstacleFrameCount = frameCount;
 		this.nextObstacleFrameCount = this.lastObstacleFrameCount + floor(random(45, 130));
-		this.obstacles.push(new Obstacle(this.sprites));
+		this.obstacles.push(new Obstacle(this.sprites, this.score));
 	}
 
 	if(this.nextCloudFrameCount == frameCount) {
@@ -114,12 +112,32 @@ Game.prototype.show = function() {
 
 	this.tRex.show();
 
-	text(this.score, width - textWidth(this.score) - 15, 20);
+	this.showScore();
+};
+
+
+Game.prototype.showScore = function() {
+
+	textFont(this.font);
+	textSize(11);
+	fill(65);
+	var str = this.score + "";
+	var StrScore = "";
+
+	for (var i=0; i<5-str.length; i++) { StrScore += "0"; }	StrScore += this.score;
+
+	text(StrScore, width - 65, 20);
 
 	if(this.highscore != 0) {
-		var string = "HI " + this.highscore;
-		text(string, width - (textWidth(string) + textWidth(this.score) + 30), 20);
+
+		fill(100);
+		str = this.highscore + "";
+		StrScore = "HI ";
+		for (var i=0; i<5-str.length; i++) { StrScore += "0"; }	StrScore += this.highscore;
+
+		text(StrScore, width - 162, 20);
 	}
+	noFill();
 };
 
 

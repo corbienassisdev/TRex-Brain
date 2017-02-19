@@ -1,34 +1,51 @@
-function Obstacle(sprites) {
+function Obstacle(sprites, score) {
 
 	this.sprites = sprites;
+	this.sprite;
+	this.x = width;
+	this.type;
 
-	var cactus = [ 	
-		'cactus.1',
-		'cactus.2',
-		'cactus.3',
-		'cactus.4',
-		'cactus.5',
-		'cactus.6'
-	];
+	var cactus = ['cactus.1', 'cactus.2', 'cactus.3', 'cactus.4', 'cactus.5', 'cactus.6'];
 
-	var type = random(cactus)
-	this.sprite = sprites[type];
+	if(score >= 400 && floor(random(0, 3)) == 0) { //1 chance sur 3 si le score > 500
+		this.type = Obstacle.type.PTERODACTYL;
+		this.sprite = sprites['pterodactyl.fly.1'];
+		this.y = floor(random(0, 3)) * 30 + 45;
+
+	}
+	else {
+		this.type = Obstacle.type.CACTUS;
+		this.sprite = sprites[random(cactus)];
+		this.y = height - (10 + this.sprite.height);
+	}
 
 	this.width = this.sprite.width;
 	this.height = this.sprite.height;
-
-	this.x = width;
-	this.y = height - (10 + this.sprite.height);
 }
 
 
 Obstacle.prototype.update = function(speed) {
 
-	this.x -= speed;
+	switch(this.type) {
+		case Obstacle.type.CACTUS:
+			this.x -= speed;
+			break;
+		case Obstacle.type.PTERODACTYL:
+			this.x -= speed * 1.2;
+			break;
+	}
 };
 
 
 Obstacle.prototype.show = function() {
+
+	if (this.type == Obstacle.type.PTERODACTYL) {
+
+		if (floor(frameCount % 20) < 10) //vrai pour 5 frames puis faux, etc
+			this.sprite = this.sprites['pterodactyl.fly.1'];
+		else
+			this.sprite = this.sprites['pterodactyl.fly.2'];
+	}
 	
 	image(this.sprite, this.x, this.y);
 };
@@ -50,6 +67,7 @@ Obstacle.prototype.hits = function(tRex) {
 
 
 Obstacle.prototype.pixelOverlap = function(tRex) {
+	
 	var img1 = this.sprite;
 	var img2 = tRex.sprite;
 

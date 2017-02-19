@@ -2,10 +2,10 @@ function Dinosaure(sprites) {
 	
 	this.sprites = sprites;
 
-	this.y = 93;
+	this.y = 95;
 	this.x = 18;
 
-	this.yGround = 93;
+	this.yGround = 95;
 
 	//gestion de la gravité
 	this.gravity = 0.6;
@@ -56,13 +56,11 @@ Dinosaure.prototype.update = function() {
 			this.status = Dinosaure.status.DUCKING;
 			this.y = this.yGround + 47 - 30;
 			this.height = this.sprite.height;
-			this.width = this.sprite.width;
 		} else { //si le tRex est en l'air
 			this.velocity += 1;
 		}
 	} else {
 		this.height = this.sprite.height;
-		this.width = this.sprite.width;
 	}
 
 	if(!this.jumping && !this.ducking && this.status != Dinosaure.status.CRASHED)

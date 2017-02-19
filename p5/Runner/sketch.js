@@ -2,6 +2,7 @@
 
 var game; //partie courante
 var sprites = new Object();
+var font;
 
 
 function preload() {
@@ -16,6 +17,9 @@ function preload() {
 	sprites['trex.duck.2'] = loadImage('sprites/trex_duck_2.png');
 	sprites['trex.crashed'] = loadImage('sprites/trex_crashed.png');
 
+	sprites['pterodactyl.fly.1'] = loadImage('sprites/pterodactyl_fly_1.png');
+	sprites['pterodactyl.fly.2'] = loadImage('sprites/pterodactyl_fly_2.png');
+
 	sprites['cactus.1'] = loadImage('sprites/cactus_big.png');
 	sprites['cactus.2'] = loadImage('sprites/cactus_big_bunch_2.png');
 	sprites['cactus.3'] = loadImage('sprites/cactus_bunch_4.png');
@@ -25,19 +29,19 @@ function preload() {
 
 	sprites['over.replay'] = loadImage('sprites/bouton_replay.png');
 	sprites['over.text'] = loadImage('sprites/game_over.png');
+
+	font = loadFont('resources/PressStart2P.ttf');
 } 
 
 
 function setup() {
-
+	
 	createCanvas(600,150);
-	game = new Game(sprites);
+	game = new Game(sprites, font);
 }
 
 
 function draw() {
-	noSmooth();
-	
 	switch(game.status) {
 		case Game.status.WAITING:
 			game.wait();
