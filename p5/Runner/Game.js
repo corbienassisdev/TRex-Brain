@@ -1,7 +1,9 @@
-function Game(sprites, font) {
+function Game(sprites, sounds, font) {
 	
 	this.sprites = sprites;
+	this.sounds = sounds;
 	this.font = font;
+
 	this.tRex = new Dinosaure(sprites);
 	this.horizon = new Horizon(sprites);
 	this.obstacles = [];
@@ -80,7 +82,7 @@ Game.prototype.update = function() {
 
 		if(this.obstacles[i].x < - this.obstacles[i].width) {
 			this.obstacles.splice(i, 1);
-			this.speed = this.speed * 1.005; //on augmente la vitesse
+			this.speed = this.speed * 1.01; //on augmente la vitesse
 		}
 	}
 
@@ -92,7 +94,7 @@ Game.prototype.update = function() {
 		}
 	}
 
-	this.tRex.update();
+	this.tRex.update(this.sounds);
 };
 
 
@@ -120,9 +122,13 @@ Game.prototype.showScore = function() {
 
 	textFont(this.font);
 	textSize(11);
+	noSmooth();
 	fill(65);
 	var str = this.score + "";
 	var StrScore = "";
+
+	if(this.score % 100 == 0 && this.score != 0)
+		this.sounds['checkpoint'].play();
 
 	for (var i=0; i<5-str.length; i++) { StrScore += "0"; }	StrScore += this.score;
 
@@ -145,6 +151,7 @@ Game.prototype.end = function() {
 
 	this.status = Game.status.OVER;
 	this.tRex.status = Dinosaure.status.CRASHED; //on affiche le tRex crashé
+	this.sounds['die'].play();
 	this.tRex.show();
 	
 	if(this.score > this.highscore)

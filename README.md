@@ -4,7 +4,7 @@ Recoding the T-Rex game from Chrome browser, to add an AI based on neural networ
 
 #TODO :
 
-*Add sounds
+*Add better sounds
 
 *Implement AI for the tRex
 

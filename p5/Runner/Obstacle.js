@@ -55,13 +55,10 @@ Obstacle.prototype.hits = function(tRex) {
 
 	if (tRex.x < this.x + this.width && tRex.x + tRex.width > this.x &&
 		tRex.y < this.y + this.height && tRex.height + tRex.y > this.y) {
-		// Il faudrait faire un second if pour la collision pixel par pixel
-		// https://forum.processing.org/two/discussion/4657/per-pixel-collision-detection
+
 		if(this.pixelOverlap(tRex))
 			return true;
-	    
 	}
-	
 	return false;
 };
 

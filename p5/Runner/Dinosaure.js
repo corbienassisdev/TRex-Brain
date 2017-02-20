@@ -23,7 +23,7 @@ function Dinosaure(sprites) {
 }
 
 
-Dinosaure.prototype.update = function() {
+Dinosaure.prototype.update = function(sounds) {
 
 	this.y += this.velocity;
 	this.velocity += this.gravity;
@@ -41,7 +41,7 @@ Dinosaure.prototype.update = function() {
 
 	//check saut
 	if(!this.jumping && (keyIsDown(UP_ARROW) || keyIsDown(32))) { //key code 32 = spacebar
-		game.tRex.jump();
+		this.jump(sounds);
 	}
 
 	//check accroupir
@@ -96,10 +96,11 @@ Dinosaure.prototype.show = function() {
 };
 
 
-Dinosaure.prototype.jump = function() {
+Dinosaure.prototype.jump = function(sounds) {
 
-	if(!this.jumping) {
+	if(!this.jumping && !this.ducking) {
 		this.status = Dinosaure.status.JUMPING;
+		sounds['jump'].play();
 		this.jumping = true;
 		this.velocity = -10.2;
 	}
