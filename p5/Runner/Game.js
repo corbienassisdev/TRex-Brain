@@ -127,8 +127,9 @@ Game.prototype.showScore = function() {
 	var str = this.score + "";
 	var StrScore = "";
 
-	if(this.score % 100 == 0 && this.score != 0)
-		this.sounds['checkpoint'].play();
+	if(this.score % 50 == 0 && this.score != 0)
+		if(!this.sounds['checkpoint'].isPlaying())
+			this.sounds['checkpoint'].play();
 
 	for (var i=0; i<5-str.length; i++) { StrScore += "0"; }	StrScore += this.score;
 
