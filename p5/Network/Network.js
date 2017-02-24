@@ -11,3 +11,8 @@ Network.prototype.display = function() {
 		this.neurons[i].display();
 	}
 };
+
+Network.prototype.connect = function(a, b) {
+	var c = new Connection(a, b, random(1));
+	a.addConnection(c);
+};
