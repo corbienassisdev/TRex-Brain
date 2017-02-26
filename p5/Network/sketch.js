@@ -6,11 +6,15 @@ function setup() {
 	createCanvas(600, 320);
 	network = new Network(width/2, height/2);
 
-	var a = new Neuron(100, 150);
-	var b = new Neuron(300, 50);
+	var input = Network.layers.INPUT;
+	var hidden = Network.layers.HIDDEN;
+	var output = Network.layers.OUTPUT;
+
+	var a = new Neuron(100, 150, input);
+	var b = new Neuron(100, 250, input);
 	var c = new Neuron(300, 150);
 	var d = new Neuron(300, 250);
-	var e = new Neuron(500, 150);
+	var e = new Neuron(500, 150, output);
 
 	network.addNeuron(a);
 	network.addNeuron(b);

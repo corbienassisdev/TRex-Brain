@@ -1,8 +1,9 @@
-function Neuron(x, y) {
+function Neuron(x, y, layer) {
 	this.x = x;
 	this.y = y;
 
 	this.connections = [];
+	this.layer = layer;
 }
 
 Neuron.prototype.addConnection = function(c) {

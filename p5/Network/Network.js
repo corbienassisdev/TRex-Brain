@@ -16,3 +16,9 @@ Network.prototype.connect = function(a, b) {
 	var c = new Connection(a, b, random(1));
 	a.addConnection(c);
 };
+
+Network.layers = {
+	INPUT: 'INPUT',
+	HIDDEN: 'HIDDEN',
+	OUTPUT: 'OUTPUT'
+};
