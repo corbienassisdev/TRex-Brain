@@ -10,17 +10,33 @@ function setup() {
 	var hidden = Network.layers.HIDDEN;
 	var output = Network.layers.OUTPUT;
 
-	var a = new Neuron(100, 150, input);
-	var b = new Neuron(100, 250, input);
-	var c = new Neuron(300, 150);
-	var d = new Neuron(300, 250);
-	var e = new Neuron(500, 150, output);
+	var n1  = new Neuron(100, 100, input);
+	var n2  = new Neuron(100, 150, input);
+	var n3  = new Neuron(100, 200, input);
+	var n4  = new Neuron(300, 250, hidden);
+	var n5  = new Neuron(500, 150, hidden);
+	var n6  = new Neuron(500, 150, hidden);
+	var n7  = new Neuron(500, 150, hidden);
+	var n8  = new Neuron(500, 150, hidden);
+	var n9  = new Neuron(500, 150, hidden);
+	var n10 = new Neuron(500, 150, hidden);
+	var n11 = new Neuron(500, 150, hidden);
+	var n12 = new Neuron(500, 150, hidden);
+	var n13 = new Neuron(0, 0, output);
+	var n14 = new Neuron(0, 0, output);
 
-	network.addNeuron(a);
-	network.addNeuron(b);
-	network.addNeuron(c);
-	network.addNeuron(d);
-	network.addNeuron(e);
+	network.addNeuron(n1);
+	network.addNeuron(n2);
+	network.addNeuron(n3);
+	network.addNeuron(n4);
+	network.addNeuron(n5);
+	network.addNeuron(n6);
+	network.addNeuron(n7);
+	network.addNeuron(n8);
+	network.addNeuron(n9);
+	network.addNeuron(n10);
+	network.addNeuron(n11);
+	network.addNeuron(n12);
 
 	network.connect(a,b);
 	network.connect(a,c);
@@ -33,5 +49,6 @@ function setup() {
 
 function draw() {
 	background(255);
+	network.update();
 	network.display();
 }

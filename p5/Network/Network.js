@@ -17,6 +17,10 @@ Network.prototype.connect = function(a, b) {
 	a.addConnection(c);
 };
 
+Network.prototype.update = function() {
+
+};
+
 Network.layers = {
 	INPUT: 'INPUT',
 	HIDDEN: 'HIDDEN',
