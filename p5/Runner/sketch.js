@@ -4,6 +4,7 @@ var game; //partie courante
 var sprites = new Object();
 var sounds = new Object();
 var font;
+
 var synaptic;
 
 
@@ -44,7 +45,6 @@ function setup() {
 	
 	createCanvas(600,150);
 	game = new Game(sprites, sounds, font);
-	console.log(synaptic.Neuron);
 }
 
 

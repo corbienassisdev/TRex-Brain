@@ -20,6 +20,8 @@ function Dinosaure(sprites) {
 	this.width = this.sprite.width;
 
 	this.status = Dinosaure.status.WAITING //pour les sprites
+
+	this.brain = new Brain();
 }
 
 
