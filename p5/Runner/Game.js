@@ -4,11 +4,11 @@ function Game(sprites, sounds, font) {
 	this.sounds = sounds;
 	this.font = font;
 
-	this.tRex = new Dinosaure(sprites);
+	this.speed = 6;
+	this.tRex = new Dinosaure(sprites, this);
 	this.horizon = new Horizon(sprites);
 	this.obstacles = [];
 	this.clouds = [];
-	this.speed = 6;
 	this.score = 0;
 	this.highscore = 0;
 	this.status = Game.status.WAITING;
@@ -39,7 +39,7 @@ Game.prototype.over = function() {
 
 
 Game.prototype.reset = function() {
-	this.tRex = new Dinosaure(this.sprites);
+	this.tRex = new Dinosaure(this.sprites, this);
 	this.horizon = new Horizon(this.sprites);
 	this.obstacles = [];
 	this.score = 0;

@@ -1,4 +1,4 @@
-function Dinosaure(sprites) {
+function Dinosaure(sprites, game) {
 	
 	this.sprites = sprites;
 
@@ -21,7 +21,7 @@ function Dinosaure(sprites) {
 
 	this.status = Dinosaure.status.WAITING //pour les sprites
 
-	this.brain = new Brain();
+	this.brain = new Brain(game);
 }
 
 
@@ -67,6 +67,8 @@ Dinosaure.prototype.update = function(sounds) {
 
 	if(!this.jumping && !this.ducking && this.status != Dinosaure.status.CRASHED)
 		this.status = Dinosaure.status.RUNNING;
+
+	this.brain.update();
 };
 
 
