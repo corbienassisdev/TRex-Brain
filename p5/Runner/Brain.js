@@ -13,17 +13,43 @@ function Brain(game) {
 	//
 
 	//initialisation au milieu (0,5)
-	
 }
 
 Brain.prototype.update = function() {
-	//vitesse : OK
-	//console.log(this.game.speed);
-	//distance cactus - dinosaure
-	var distance;
+	var inputs = this.getInputs();
+	
+	//reprendre ici
+
+	console.log(inputs);
+};
+
+Brain.prototype.getInputs = function() {
+	
+	var inputs = [];
+
+	var obstaclesToReach = [];
+	var nearObstacle;
+
 	for(var i = 0; i<this.game.obstacles.length; i++) {
-		if (this.game.obstacles[i].x > this.game.tRex.x)
-			distance = console.log(this.game.obstacles[i].x - this.game.tRex.x);
+		if (this.game.obstacles[i].x >= this.game.tRex.x) {
+			obstaclesToReach.push(this.game.obstacles[i]);
+		}
 	}
-	//distance : OK (pas sûr)
+
+    if (obstaclesToReach.length > 0) {
+		nearObstacle = obstaclesToReach[0];
+		for(var i = 0; i<obstaclesToReach.length; i++) {
+			if (obstaclesToReach[i].x < nearObstacle.x)
+				nearObstacle = obstaclesToReach[i];
+		}
+	}
+
+	if(nearObstacle != null) {
+		inputs['speed'] = this.game.speed;
+		inputs['distance'] = nearObstacle.x;
+		inputs['width'] = nearObstacle.width;
+		inputs['type'] = nearObstacle.type;
+	}
+
+	return inputs;
 };
