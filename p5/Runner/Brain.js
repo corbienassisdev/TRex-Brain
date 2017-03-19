@@ -17,10 +17,12 @@ function Brain(game) {
 
 Brain.prototype.update = function() {
 	var inputs = this.getInputs();
-	
+	var outputs = this.network.activate(inputs);
+
+	console.log(outputs);
 	//reprendre ici
 
-	console.log(inputs);
+	//console.log(inputs);
 };
 
 Brain.prototype.getInputs = function() {
@@ -45,10 +47,15 @@ Brain.prototype.getInputs = function() {
 	}
 
 	if(nearObstacle != null) {
-		inputs['speed'] = this.game.speed;
-		inputs['distance'] = nearObstacle.x;
-		inputs['width'] = nearObstacle.width;
-		inputs['type'] = nearObstacle.type;
+		var speed = map(this.game.speed, 0, 15, 0, 1); //speed (0 to 1)
+		var distance = map(nearObstacle.x, 0, 500, 0, 1); //distance form next obtstalce (0 to 1)
+		var width = map(nearObstacle.width, 0, 73, 0, 1);
+		var type = (nearObstacle.type==Obstacle.type.CACTUS)?0:1;
+
+		inputs.push(speed);
+		inputs.push(distance);
+		inputs.push(width);
+		inputs.push(type);
 	}
 
 	return inputs;
