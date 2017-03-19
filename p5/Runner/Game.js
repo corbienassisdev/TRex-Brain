@@ -5,7 +5,7 @@ function Game(sprites, sounds, font) {
 	this.font = font;
 
 	this.speed = 6;
-	this.tRex = new Dinosaure(sprites, this);
+	this.tRex = new Dinosaure(this);
 	this.horizon = new Horizon(sprites);
 	this.obstacles = [];
 	this.clouds = [];
@@ -15,6 +15,8 @@ function Game(sprites, sounds, font) {
 
 	this.nextObstacleFrameCount = floor(random(45, 130));
 	this.nextCloudFrameCount = floor(random(100, 800));
+
+	this.obstacles.push(new Obstacle(this.sprites, this.score));
 }
 
 
@@ -39,11 +41,12 @@ Game.prototype.over = function() {
 
 
 Game.prototype.reset = function() {
-	this.tRex = new Dinosaure(this.sprites, this);
+	this.tRex = new Dinosaure(this);
 	this.horizon = new Horizon(this.sprites);
 	this.obstacles = [];
 	this.score = 0;
 	this.speed = 6;
+	this.obstacles.push(new Obstacle(this.sprites, this.score));
 };
 
 

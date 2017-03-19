@@ -1,6 +1,6 @@
-function Dinosaure(sprites, game) {
-	
-	this.sprites = sprites;
+function Dinosaure(game) {
+
+	this.game = game;
 
 	this.y = 95;
 	this.x = 18;
@@ -14,14 +14,13 @@ function Dinosaure(sprites, game) {
 	this.jumping = false;
 	this.ducking = false;
 
-	this.sprite = this.sprites['trex.stand'];
-
+	this.sprite = this.game.sprites['trex.stand'];
 	this.height = this.sprite.height;
 	this.width = this.sprite.width;
 
 	this.status = Dinosaure.status.WAITING //pour les sprites
 
-	this.brain = new Brain(game);
+	this.brain = new Brain(this);
 }
 
 
@@ -50,7 +49,7 @@ Dinosaure.prototype.update = function(sounds) {
 	if(keyIsDown(DOWN_ARROW)) {
 		this.ducking = true;
 	} else {
-		this.ducking  = false;
+		this.ducking  = false; //ne fonctionne pas avec Brain car DOWN_ARROW not pressed..., rajouter booléen ?
 	}
 
 	if(this.ducking) {
@@ -75,41 +74,45 @@ Dinosaure.prototype.update = function(sounds) {
 Dinosaure.prototype.show = function() {
 	switch (this.status) {
 		case Dinosaure.status.WAITING:
-			this.sprite = this.sprites['trex.stand'];
+			this.sprite = this.game.sprites['trex.stand'];
 			break;
 		case Dinosaure.status.RUNNING:
 			if (floor(frameCount % 10) < 5) //vrai pour 5 frames puis faux, etc
-				this.sprite = this.sprites['trex.run.1'];
+				this.sprite = this.game.sprites['trex.run.1'];
 			else
-				this.sprite = this.sprites['trex.run.2'];
+				this.sprite = this.game.sprites['trex.run.2'];
 			break;
 		case Dinosaure.status.DUCKING:
 			if (floor(frameCount % 10) < 5) //vrai pour 5 frames puis faux, etc
-				this.sprite = this.sprites['trex.duck.1'];
+				this.sprite = this.game.sprites['trex.duck.1'];
 			else
-				this.sprite = this.sprites['trex.duck.2'];
+				this.sprite = this.game.sprites['trex.duck.2'];
 			break;
 		case Dinosaure.status.JUMPING:
-			this.sprite = this.sprites['trex.stand'];
+			this.sprite = this.game.sprites['trex.stand'];
 			break;
 		case Dinosaure.status.CRASHED:
-			this.sprite = this.sprites['trex.crashed'];
+			this.sprite = this.game.sprites['trex.crashed'];
 			break;
 	}
 	image(this.sprite, this.x, this.y);
 };
 
 
-Dinosaure.prototype.jump = function(sounds) {
+Dinosaure.prototype.jump = function() {
 
 	if(!this.jumping && !this.ducking) {
 		this.status = Dinosaure.status.JUMPING;
-		sounds['jump'].play();
+		this.game.sounds['jump'].play();
 		this.jumping = true;
 		this.velocity = -10.2;
 	}
 };
 
+Dinosaure.prototype.duck = function() {
+
+	this.ducking = true;
+}
 
 Dinosaure.status = {
 	WAITING: 'WAITING',

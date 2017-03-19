@@ -4,8 +4,8 @@ Recoding the T-Rex game from Chrome browser, to add an AI based on neural networ
 
 #TODO :
 
-*Add better sounds
-
-*Implement AI for the tRex
+*Be able to have multiples dinosaures in the same game
 
 *Implements Genetic Aspects
+
+*Make a graphical representation for the network
