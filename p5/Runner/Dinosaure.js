@@ -46,7 +46,7 @@ Dinosaure.prototype.update = function(sounds) {
 	}
 
 	//check accroupir
-	if(keyIsDown(DOWN_ARROW)) {
+	if(keyIsDown(DOWN_ARROW) || this.brain.duck) {
 		this.ducking = true;
 	} else {
 		this.ducking  = false; //ne fonctionne pas avec Brain car DOWN_ARROW not pressed..., rajouter booléen ?

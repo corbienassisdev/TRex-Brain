@@ -3,18 +3,31 @@ function Brain(tRex) {
 	this.network = new synaptic.Architect.Perceptron(4,6,6,2);
 	this.tRex = tRex; //reference au tRex lui même linké à la game (pour les inputs)
 
+	this.duck = false;
+
 	//initialisation au milieu (0,5)
 }
 
 Brain.prototype.update = function() {
+	
 	var inputs = this.getInputs();
 	var outputs = this.network.activate(inputs);
-	console.log(outputs);
 
-	//if(outputs[0] >= 0.5)
-	//	this.tRex.jump();
-	//if(outputs[1] >= 0.5)
-	//	this.tRex.duck();
+	//bloc de test : le tRex réagit comme il faut !
+	/*if (50 < this.tRex.game.score && this.tRex.game.score < 100) {
+		outputs[0] = 0.7;
+		outputs[1] = 0.3;
+	} else if (100 < this.tRex.game.score && this.tRex.game.score < 150) {
+		outputs[0] = 0.3;
+		outputs[1] = 0.7;
+	}*/
+
+	console.log(outputs);
+	
+	if(outputs[0] >= 0.5)
+		this.tRex.jump();
+	if(outputs[1] >= 0.5)
+		this.duck = true;
 };
 
 Brain.prototype.getInputs = function() {
