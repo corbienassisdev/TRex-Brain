@@ -13,8 +13,8 @@ function Game(sprites, sounds, font) {
 	this.highscore = 0;
 	this.status = Game.status.WAITING;
 
-	this.nextObstacleFrameCount = floor(random(45, 130));
-	this.nextCloudFrameCount = floor(random(100, 800));
+	this.nextObsFC = floor(random(45, 130)); //next Obstacle FrameCount
+	this.nextCloudFC = floor(random(100, 800)); //next Cloud FrameCount
 
 	this.obstacles.push(new Obstacle(this.sprites, this.score));
 }
@@ -62,15 +62,15 @@ Game.prototype.update = function() {
 	if(frameCount % 8 == 0)
 		this.score++;
 
-	if(this.nextObstacleFrameCount == frameCount) {
-		this.lastObstacleFrameCount = frameCount;
-		this.nextObstacleFrameCount = this.lastObstacleFrameCount + floor(random(45, 130));
+	if(this.nextObsFC == frameCount) {
+		this.lastObsFC = frameCount;
+		this.nextObsFC = this.lastObsFC + floor(random(45, 130));
 		this.obstacles.push(new Obstacle(this.sprites, this.score));
 	}
 
-	if(this.nextCloudFrameCount == frameCount) {
-		this.lastCloudFrameCount = frameCount;
-		this.nextCloudFrameCount = this.lastCloudFrameCount + floor(random(100, 800));
+	if(this.nextCloudFC == frameCount) {
+		this.lastCloudFC = frameCount;
+		this.nextCloudFC = this.lastCloudFC + floor(random(100, 800));
 		this.clouds.push(new Cloud(this.sprites));
 	}
 
@@ -90,11 +90,11 @@ Game.prototype.update = function() {
 	}
 
 	for (var i = this.clouds.length -1; i > 0; i--) {
+
 		this.clouds[i].update(this.speed);
 
-		if(this.clouds[i].x < - this.clouds[i].width) {
+		if(this.clouds[i].x < - this.clouds[i].width)
 			this.clouds.splice(i, 1);
-		}
 	}
 
 	this.tRex.update(this.sounds);
@@ -130,7 +130,7 @@ Game.prototype.showScore = function() {
 	var str = this.score + "";
 	var StrScore = "";
 
-	if(this.score % 50 == 0 && this.score != 0)
+	if(this.score % 100 == 0 && this.score != 0)
 		if(!this.sounds['checkpoint'].isPlaying())
 			this.sounds['checkpoint'].play();
 

@@ -20,6 +20,9 @@ Brain.prototype.update = function() {
 	} else if (100 < this.tRex.game.score && this.tRex.game.score < 150) {
 		outputs[0] = 0.3;
 		outputs[1] = 0.7;
+	} else if (150 < this.tRex.game.score && this.tRex.game.score < 200) {
+		outputs[0] = 0.7;
+		outputs[1] = 0.7;
 	}*/
 
 	console.log(outputs);
