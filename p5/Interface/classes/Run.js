@@ -8,7 +8,7 @@ var manip;
 
 manip = new Manipulator();
 manip.initialize();
-
+//manip.run();
 
 // LAYOUT FITTING //
 

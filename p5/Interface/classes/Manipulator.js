@@ -1,5 +1,6 @@
 function Manipulator() {
 	
+	//Genetic attributes
 	this.MUTATION_RATE = 0.01;
 	this.N_MAX = 12; //number of genomes per generation
 
@@ -42,14 +43,15 @@ Manipulator.prototype.calcFitness = function() {
 	var dinosaures = [];
 
 	this.genomes.forEach(function(genome) {
-		brains.push(new Brain(genome));
+	//	brains.push(new Brain(genome));
 	});
 
 	brains.forEach(function(brain) {
-		dinosaures.push(new Dinosaure(brain));
+	//	dinosaures.push(new Dinosaure(brain));
 	});
 
-	var game = new Game(dinosaures);
+	this.game.start();
+	//var game = new Game(dinosaures);
 };
 
 Manipulator.prototype.selectParents = function() {
