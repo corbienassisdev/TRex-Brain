@@ -93,7 +93,7 @@ Obstacle.prototype.pixelOverlap = function(tRex) {
 			var color2 = img2.get((x - x2), (y - y2));
 
 			if(alpha(color1) != 0 && alpha(color2) != 0)
-				return true;
+				return true; 
 		}
     }
     return false;
