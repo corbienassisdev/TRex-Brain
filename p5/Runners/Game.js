@@ -110,6 +110,12 @@ Game.prototype.update = function() {
 		if(this.obstacles[i].x < -this.obstacles[i].width) {
 			this.obstacles.splice(i, 1);
 			this.speed = this.speed * 1.01; //on augmente la vitesse
+			//
+			this.tRexes.forEach(function(tRex) {
+				tRex.fitness++;
+				console.log(tRex.fitness);
+			});
+			//
 		}
 	}
 
@@ -123,7 +129,7 @@ Game.prototype.update = function() {
 
 	//this.tRex.update(this.sounds);
 	this.tRexes.forEach(function(tRex) {
-		tRex.update(this.sounds);
+		tRex.update();
 	});
 };
 

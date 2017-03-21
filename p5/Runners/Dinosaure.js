@@ -21,10 +21,11 @@ function Dinosaure(game) {
 	this.status = Dinosaure.status.WAITING //pour les sprites
 
 	this.brain = new Brain(this);
+	this.fitness; //nombre de cactus sautés
 }
 
 
-Dinosaure.prototype.update = function(sounds) {
+Dinosaure.prototype.update = function() {
 
 	this.y += this.velocity;
 	this.velocity += this.gravity;
@@ -42,7 +43,7 @@ Dinosaure.prototype.update = function(sounds) {
 
 	//check saut
 	if(!this.jumping && (keyIsDown(UP_ARROW) || keyIsDown(32))) { //key code 32 = spacebar
-		this.jump(sounds);
+		this.jump();
 	}
 
 	//check accroupir

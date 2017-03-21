@@ -38,11 +38,18 @@ Manipulator.prototype.calcFitness = function() {
 	//à partir de mes génomes, je crée les cerveaux des dinosaures, puis les dinosaures
 	//je lance un partie avec mes dinosaures
 	//je récupère la fitness pour chaque génome
+	var brains = [];
 	var dinosaures = [];
+
 	this.genomes.forEach(function(genome) {
-		console.log("coucou");
+		brains.push(new Brain(genome));
 	});
-	var game = new Game();
+
+	brains.forEach(function(brain) {
+		dinosaures.push(new Dinosaure(brain));
+	});
+
+	var game = new Game(dinosaures);
 };
 
 Manipulator.prototype.selectParents = function() {

@@ -6,7 +6,7 @@ var sounds = new Object();
 var font;
 
 var synaptic;
-
+var manipulator;
 
 function preload() {
 
