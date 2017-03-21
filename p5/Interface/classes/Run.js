@@ -3,12 +3,11 @@
 const CANVAS_WIDTH = 600;
 const CANVAS_HEIGHT = 150;
 
-
 var manip;
 
 manip = new Manipulator();
 manip.initialize();
-//manip.run();
+manip.select();
 
 // LAYOUT FITTING //
 

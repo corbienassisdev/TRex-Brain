@@ -43,15 +43,15 @@ Manipulator.prototype.calcFitness = function() {
 	var dinosaures = [];
 
 	this.genomes.forEach(function(genome) {
-	//	brains.push(new Brain(genome));
+		brains.push(new Brain(genome));
 	});
 
 	brains.forEach(function(brain) {
-	//	dinosaures.push(new Dinosaure(brain));
+		dinosaures.push(new Dinosaure(brain));
 	});
 
-	this.game.start();
-	//var game = new Game(dinosaures);
+	var game = new Game(dinosaures);
+	//var fitnesses = game.run();
 };
 
 Manipulator.prototype.selectParents = function() {

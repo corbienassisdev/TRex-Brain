@@ -13,7 +13,7 @@ function Dinosaure(game) {
 
 	this.jumping = false;
 	this.ducking = false;
-
+console.log(this.game.sprites);
 	this.sprite = this.game.sprites['trex.stand'];
 	this.height = this.sprite.height;
 	this.width = this.sprite.width;
