@@ -109,10 +109,61 @@ Dinosaure.prototype.jump = function() {
 	}
 };
 
+
 Dinosaure.prototype.duck = function() {
 
 	this.ducking = true;
-}
+};
+
+
+Dinosaure.prototype.hits = function(obstacle) {
+
+	if (this.x < obstacle.x + obstacle.width && this.x + this.width > obstacle.x &&
+		this.y < obstacle.y + obstacle.height && this.height + this.y > obstacle.y) {
+
+		if(this.pixelOverlap(this))
+			return true;
+	}
+	return false;
+};
+
+
+Dinosaure.prototype.pixelOverlap = function(obstacle) {
+	
+	var img1 = obstacle.sprite;
+	var img2 = this.sprite;
+
+	var x1 = obstacle.x;
+	var x2 = this.x;
+	var y1 = obstacle.y;
+	var y2 = this.y;
+	var h1 = obstacle.height;
+	var h2 = this.height;
+	var w1 = obstacle.width;
+	var w2 = this.width;
+
+	img1.loadPixels();
+	img2.loadPixels();
+
+	var top = max(y1, y2);
+	var bottom = min(y1+h1, y2+h2);
+	var left = max(x1, x2);
+	var right = min(x1+w1, x2+w2);
+
+	for(var y = top; y < bottom; y++) {
+
+		for(var x = left; x < right; x++) {
+
+			var color1 = img1.get((x - x1), (y - y1));
+			var color2 = img2.get((x - x2), (y - y2));
+
+			if(alpha(color1) != 0 && alpha(color2) != 0)
+				return true; 
+		}
+    }
+    return false;
+};
+
 
 Dinosaure.status = {
 	WAITING: 'WAITING',

@@ -5,8 +5,8 @@ function Manipulator() {
 
 	this.nbGenerations = 0;
 
-	this.genomes;
-	this.matingPool;
+	this.genomes = [];
+	this.matingPool = [];
 }
 
 Manipulator.prototype.run = function() {
@@ -19,7 +19,6 @@ Manipulator.prototype.run = function() {
 Manipulator.prototype.initialize = function() {
 
 	//initializes a population of N_MAX genomes
-	this.genomes = [];
 	for(var i=0; i<this.N_MAX; i++)
 		this.genomes.push(new synaptic.Architect.Perceptron(4,6,6,2));
 };
@@ -51,7 +50,7 @@ Manipulator.prototype.selectParents = function() {
 };
 
 Manipulator.prototype.crossover = function() {
-	//
+	
 };
 
 Manipulator.prototype.mutate = function() {
