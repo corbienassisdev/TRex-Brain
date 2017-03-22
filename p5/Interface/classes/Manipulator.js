@@ -1,6 +1,5 @@
 function Manipulator() {
 	
-	//Genetic attributes
 	this.MUTATION_RATE = 0.01;
 	this.N_MAX = 12; //number of genomes per generation
 

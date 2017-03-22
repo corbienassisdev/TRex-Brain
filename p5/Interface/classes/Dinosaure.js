@@ -76,7 +76,7 @@ Dinosaure.prototype.update = function() {
 	if(this.game.p5.keyIsDown(this.game.p5.DOWN_ARROW) || this.brain.duck) {
 		this.ducking = true;
 	} else {
-		this.ducking  = false; //ne fonctionne pas avec Brain car DOWN_ARROW not pressed..., rajouter booléen ?
+		this.ducking  = false;
 	}
 
 	if(this.ducking) {

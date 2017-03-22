@@ -66,7 +66,7 @@ function Game(dinosaures) {
 						game.start();
 					break;
 				case Game.status.OVER:
-					if(p5.keyCode == p5.UP_ARROW || p5.keyCode == 32 || mouseIsPressed) {
+					if(p5.keyCode == p5.UP_ARROW || p5.keyCode == 32 || p5.mouseIsPressed) {
 						game.reset();
 						game.start();
 					}	
@@ -84,6 +84,7 @@ function Game(dinosaures) {
 
 	this.p5 = new p5(sketch);
 
+	this.highscore = 0;
 	this.status;
 	this.speed;
 	this.horizon;
@@ -91,7 +92,6 @@ function Game(dinosaures) {
 	this.clouds;
 	this.dinosaures;
 	this.score;
-	this.highscore;
 	this.status;
 
 	this.nextObsFC; //next Obstacle FrameCount
@@ -114,7 +114,6 @@ Game.prototype.initialize = function(dinosaures) {
 
 	this.speed = 6;
 	this.score = 0;
-	this.highscore = 0;
 
 	this.lastObsFC = this.p5.frameCount;
 	this.lastCloudFC = this.p5.frameCount;

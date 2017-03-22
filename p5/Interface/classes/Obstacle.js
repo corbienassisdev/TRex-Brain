@@ -9,7 +9,7 @@ function Obstacle(game) {
 
 	if(this.game.score >= 400 && this.game.p5.floor(this.game.p5.random(0, 3)) == 0) { //1 chance sur 3 si le score > 500
 		this.type = Obstacle.type.PTERODACTYL;
-		this.sprite = sprites['pterodactyl.fly.1'];
+		this.sprite = this.game.sprites['pterodactyl.fly.1'];
 		this.y = this.game.p5.floor(this.game.p5.random(0, 3)) * 30 + 45;
 
 	}
@@ -41,25 +41,13 @@ Obstacle.prototype.show = function() {
 
 	if (this.type == Obstacle.type.PTERODACTYL) {
 
-		if (floor(frameCount % 20) < 10) //vrai pour 5 frames puis faux, etc
-			this.sprite = this.sprites['pterodactyl.fly.1'];
+		if (this.game.p5.floor(this.game.p5.floorframeCount % 20) < 10) //vrai pour 5 frames puis faux, etc
+			this.sprite = this.game.sprites['pterodactyl.fly.1'];
 		else
-			this.sprite = this.sprites['pterodactyl.fly.2'];
+			this.sprite = this.game.sprites['pterodactyl.fly.2'];
 	}
 	
 	this.game.p5.image(this.sprite, this.x, this.y);
-};
-
-
-Obstacle.prototype.hits = function(tRex) {
-
-	if (tRex.x < this.x + this.width && tRex.x + tRex.width > this.x &&
-		tRex.y < this.y + this.height && tRex.height + tRex.y > this.y) {
-
-		if(this.pixelOverlap(tRex))
-			return true;
-	}
-	return false;
 };
 
 

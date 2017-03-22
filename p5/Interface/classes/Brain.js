@@ -3,6 +3,8 @@ function Brain(network) {
 	this.network = network;
 	this.host; //reference to the possessor of the brain (for inputs)
 
+	
+
 	this.duck;
 }
 
@@ -28,6 +30,8 @@ Brain.prototype.update = function() {
 		outputs[0] = 0.7;
 		outputs[1] = 0.7;
 	}*/
+
+	//console.log(outputs);
 	
 	if(outputs[0] >= 0.5)
 		this.host.jump();
