@@ -1,7 +1,7 @@
+Manipulator.MUTATION_RATE = 0.01;
+Manipulator.N_MAX = 12; //number of genomes per generation
+
 function Manipulator() {
-	
-	this.MUTATION_RATE = 0.01;
-	this.N_MAX = 12; //number of genomes per generation
 
 	this.nbGenerations = 0;
 
@@ -19,8 +19,10 @@ Manipulator.prototype.run = function() {
 Manipulator.prototype.initialize = function() {
 
 	//initializes a population of N_MAX genomes
-	for(var i=0; i<this.N_MAX; i++)
-		this.genomes.push(new synaptic.Architect.Perceptron(4,6,6,2));
+	for(var i=0; i<Manipulator.N_MAX; i++) {
+		var perceptron = new synaptic.Architect.Perceptron(4,6,6,2);
+		this.genomes.push(new Genome(perceptron, 0));
+	}
 };
 
 Manipulator.prototype.select = function() {
@@ -35,9 +37,7 @@ Manipulator.prototype.reproduce = function() {
 
 
 Manipulator.prototype.calcFitness = function() {
-	//à partir de mes génomes, je crée les cerveaux des dinosaures, puis les dinosaures
-	//je lance un partie avec mes dinosaures
-	//je récupère la fitness pour chaque génome
+	
 	var brains = [];
 	var dinosaures = [];
 
@@ -48,12 +48,10 @@ Manipulator.prototype.calcFitness = function() {
 	brains.forEach(function(brain) {
 		dinosaures.push(new Dinosaure(brain));
 	});
-
+	
 	var game = new Game(dinosaures);
-	var fitnesses = game.instance();
-
-	//game.initialize(dinosaures);
-	//var fitnesses = game.run(dinosaures);
+	//game.initialize();
+	game.instance(); //fill fitness for each genome
 };
 
 Manipulator.prototype.selectParents = function() {

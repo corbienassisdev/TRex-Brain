@@ -4,7 +4,7 @@ function Game(dinosaures) {
 	this.sounds = new Object();
 	this.font;
 
-	/*var game = this;
+	var game = this;
 	var sketch = function(p5) {
 
 		p5.preload = function() {
@@ -41,10 +41,11 @@ function Game(dinosaures) {
 		p5.setup = function() {
 			p5.createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
 			game.initialize(dinosaures);
+			game.instance();
 		};
 
 		p5.draw = function() {
-			
+			console.log(game);
 			switch(game.status) {
 				case Game.status.WAITING:
 					game.wait();
@@ -83,9 +84,9 @@ function Game(dinosaures) {
 		}
 	};
 
-	this.p5 = new p5(sketch);*/
+	this.p5 = new p5(sketch);
 
-	this.dinosaures = dinosaures;
+	this.dinosaures;
 	this.highscore = 0;
 	this.status;
 	this.speed;
@@ -294,9 +295,10 @@ Game.prototype.reset = function() {
 };
 
 
-Game.prototype.run = function() {
+Game.prototype.instance = function() {
 
-	console.log('run');
+	console.log('run instance');
+	this.start();
 };
 
 
