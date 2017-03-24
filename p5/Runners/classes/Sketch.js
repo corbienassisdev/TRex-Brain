@@ -43,12 +43,13 @@ function preload() {
 
 function setup() {
 	
-	createCanvas(600,150);
+	createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
 	game = new Game(sprites, sounds, font);
 }
 
 
 function draw() {
+	
 	switch(game.status) {
 		case Game.status.WAITING:
 			game.wait();

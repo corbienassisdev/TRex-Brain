@@ -4,7 +4,7 @@ function Game(dinosaures) {
 	this.sounds = new Object();
 	this.font;
 
-	var game = this;
+	/*var game = this;
 	var sketch = function(p5) {
 
 		p5.preload = function() {
@@ -83,15 +83,15 @@ function Game(dinosaures) {
 		}
 	};
 
-	this.p5 = new p5(sketch);
+	this.p5 = new p5(sketch);*/
 
+	this.dinosaures = dinosaures;
 	this.highscore = 0;
 	this.status;
 	this.speed;
 	this.horizon;
 	this.obstacles;
 	this.clouds;
-	this.dinosaures;
 	this.score;
 	this.status;
 
@@ -129,6 +129,9 @@ Game.prototype.initialize = function(dinosaures) {
 Game.prototype.start = function() {
 
 	this.status = Game.status.RUNNING;
+
+	//console.log(this);
+	//console.log(this.dinosaures);
 
 	this.dinosaures.forEach(function(d) {
 		d.status = Dinosaure.status.RUNNING;

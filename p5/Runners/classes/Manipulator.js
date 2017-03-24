@@ -48,9 +48,8 @@ Manipulator.prototype.calcFitness = function() {
 	brains.forEach(function(brain) {
 		dinosaures.push(new Dinosaure(brain));
 	});
-	
+
 	var game = new Game(dinosaures);
-	//game.initialize(dinosaures);
 	//var fitnesses = game.run(dinosaures);
 };
 
