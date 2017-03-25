@@ -12,6 +12,7 @@ function Dinosaure(brain) {
 
 	this.jumping = false;
 	this.ducking = false;
+	this.brainduck = false;
 
 	this.status = Dinosaure.status.WAITING
 }
@@ -49,18 +50,20 @@ Dinosaure.prototype.update = function() {
 	}
 
 	//check accroupir
-	if(keyIsDown(DOWN_ARROW) || this.brain.duck) {
+	if(keyIsDown(DOWN_ARROW) || this.brainduck) {
 		this.ducking = true;
 	} else {
 		this.ducking  = false;
 	}
 
 	if(this.ducking) {
-		if(this.y == this.yGround) { //si le tRex est debout sur le sol
+		//si le tRex est debout sur le sol
+		if(this.y == this.yGround) { 
 			this.status = Dinosaure.status.DUCKING;
 			this.y = this.yGround + 47 - 30;
 			this.height = this.sprite.height;
-		} else { //si le tRex est en l'air
+		//si le tRex est en l'air
+		} else { 
 			this.velocity += 1;
 		}
 	} else {
@@ -100,7 +103,6 @@ Dinosaure.prototype.show = function() {
 			break;
 	}
 
-
 	context.drawImage(this.sprite, this.x, this.y);
 };
 
@@ -109,7 +111,7 @@ Dinosaure.prototype.jump = function() {
 
 	if(!this.jumping && !this.ducking) {
 		this.status = Dinosaure.status.JUMPING;
-		//this.game.sounds['jump'].play();
+		this.game.sounds['jump'].play();
 		this.jumping = true;
 		this.velocity = -10.2;
 	}
@@ -118,7 +120,7 @@ Dinosaure.prototype.jump = function() {
 
 Dinosaure.prototype.duck = function() {
 
-	this.ducking = true;
+	this.brainduck = true;
 };
 
 

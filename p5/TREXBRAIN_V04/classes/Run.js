@@ -15,7 +15,6 @@ window.onload = function() {
 
 	canvas.width = CANVAS_WIDTH;
 	canvas.height = CANVAS_HEIGHT;
-
 	organize();
 
 	var manip;
@@ -27,10 +26,6 @@ window.onload = function() {
 
 
 // LAYOUT FITTING //
-
-$(document).ready(function() {
-	organize();
-});
 
 $(window).resize(function() {
 	organize();

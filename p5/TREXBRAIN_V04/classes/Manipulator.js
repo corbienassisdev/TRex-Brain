@@ -1,5 +1,5 @@
 Manipulator.MUTATION_RATE = 0.01;
-Manipulator.N_MAX = 12; //number of genomes per generation
+Manipulator.N_MAX = 1; //number of genomes per generation
 
 function Manipulator() {
 
@@ -50,7 +50,6 @@ Manipulator.prototype.calcFitness = function() {
 	});
 	
 	var game = new Game(dinosaures);
-	//game.initialize();
 	game.instance(); //fill fitness for each genome
 };
 

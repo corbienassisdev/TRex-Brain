@@ -1,16 +1,12 @@
 function Brain(genome) {
 
 	this.genome = genome;
-
 	this.host; //reference to the possessor of the brain (for inputs)
-
-	this.duck;
 }
 
 Brain.prototype.initialize = function (dinosaure) {
 
 	this.host = dinosaure;
-	this.duck = false;
 };
 
 Brain.prototype.update = function() {
@@ -35,7 +31,7 @@ Brain.prototype.update = function() {
 	if(outputs[0] >= 0.5)
 		this.host.jump();
 	if(outputs[1] >= 0.5)
-		this.duck = true;
+		this.host.duck();
 };
 
 Brain.prototype.getInputs = function() {

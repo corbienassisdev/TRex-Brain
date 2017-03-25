@@ -11,11 +11,11 @@ function Game(dinosaures) {
 	this.horizon = new Horizon(this);
 	this.obstacles = [];
 	this.clouds = [];
-	this.speed = 6;
+	this.speed = 4;
 	this.score = 0;
 	this.lastObsFC = Game.frame;
 	this.lastCloudFC = Game.frame;
-	this.nextObsFC = this.lastObsFC + floor(random(45, 130));//next Obstacle FrameCount
+	this.nextObsFC = this.lastObsFC + floor(random(45, 100));//next Obstacle FrameCount
 	this.nextCloudFC = this.lastCloudFC + floor(random(100, 800)); //next Cloud FrameCount
 
 	this.initialize();
@@ -25,32 +25,36 @@ Game.frame = 0;
 
 Game.prototype.setup = function() {
 
-	this.sprites['horizon'] = common.loadImage('resources/sprites/horizon.png');
-	this.sprites['cloud'] = common.loadImage('resources/sprites/cloud.png');
+	this.loadSprite('horizon', 'horizon.png');
+	this.loadSprite('cloud', 'cloud.png');
+	this.loadSprite('trex.stand', 'trex_stand.png');
+	this.loadSprite('trex.run.1', 'trex_run_1.png');
+	this.loadSprite('trex.run.2', 'trex_run_2.png');
+	this.loadSprite('trex.duck.1', 'trex_duck_1.png');
+	this.loadSprite('trex.duck.2', 'trex_duck_2.png');
+	this.loadSprite('trex.crashed', 'trex_crashed.png');
+	this.loadSprite('pterodactyl.fly.1', 'pterodactyl_fly_1.png');
+	this.loadSprite('pterodactyl.fly.2', 'pterodactyl_fly_2.png');
+	this.loadSprite('cactus.1', 'cactus_big.png');
+	this.loadSprite('cactus.2', 'cactus_big_bunch_2.png');
+	this.loadSprite('cactus.3', 'cactus_bunch_4.png');
+	this.loadSprite('cactus.4', 'cactus_small.png');
+	this.loadSprite('cactus.5', 'cactus_small_bunch_2.png');
+	this.loadSprite('cactus.6', 'cactus_small_bunch_3.png');
+	this.loadSprite('over.replay', 'bouton_replay.png');
+	this.loadSprite('over.text', 'game_over.png');
 
-	this.sprites['trex.stand'] = common.loadImage('resources/sprites/trex_stand.png');
-	this.sprites['trex.run.1'] = common.loadImage('resources/sprites/trex_run_1.png');
-	this.sprites['trex.run.2'] = common.loadImage('resources/sprites/trex_run_2.png');
-	this.sprites['trex.duck.1'] = common.loadImage('resources/sprites/trex_duck_1.png');
-	this.sprites['trex.duck.2'] = common.loadImage('resources/sprites/trex_duck_2.png');
-	this.sprites['trex.crashed'] = common.loadImage('resources/sprites/trex_crashed.png');
+	this.sounds['checkpoint'] = new Audio('resources/sounds/checkPoint.mp3');
+	this.sounds['jump'] = new Audio('resources/sounds/jump.mp3');
+	this.sounds['die'] = new Audio('resources/sounds/die.mp3');
+};
 
-	this.sprites['pterodactyl.fly.1'] = common.loadImage('resources/sprites/pterodactyl_fly_1.png');
-	this.sprites['pterodactyl.fly.2'] = common.loadImage('resources/sprites/pterodactyl_fly_2.png');
+Game.prototype.loadSprite = function(name, file) {
 
-	this.sprites['cactus.1'] = common.loadImage('resources/sprites/cactus_big.png');
-	this.sprites['cactus.2'] = common.loadImage('resources/sprites/cactus_big_bunch_2.png');
-	this.sprites['cactus.3'] = common.loadImage('resources/sprites/cactus_bunch_4.png');
-	this.sprites['cactus.4'] = common.loadImage('resources/sprites/cactus_small.png');
-	this.sprites['cactus.5'] = common.loadImage('resources/sprites/cactus_small_bunch_2.png');
-	this.sprites['cactus.6'] = common.loadImage('resources/sprites/cactus_small_bunch_3.png');
-
-	this.sprites['over.replay'] = common.loadImage('resources/sprites/bouton_replay.png');
-	this.sprites['over.text'] = common.loadImage('resources/sprites/game_over.png');
-
-	//this.sounds['checkpoint'] = loadSound('resources/sounds/checkPoint.mp3');
-	//this.sounds['jump'] = loadSound('resources/sounds/jump.mp3');
-	//this.sounds['die'] = loadSound('resources/sounds/die.mp3');
+	var path = 'resources/sprites/';
+	var image = new Image();
+	image.src = path + file;
+	this.sprites[name] = image;
 };
 
 
@@ -71,7 +75,7 @@ Game.prototype.instance = function() {
 };
 
 
-Game.prototype.draw = function() {
+Game.prototype.refresh = function() {
 
 	switch(this.status) {
 		case Game.status.WAITING:
@@ -85,9 +89,8 @@ Game.prototype.draw = function() {
 			this.over();
 	}
 
-	//console.log(Game.frame);
-
-	Game.frame = requestAnimationFrame(this.draw.bind(this));
+	requestAnimationFrame(this.refresh.bind(this));
+	Game.frame++;
 };
 
 
@@ -99,23 +102,23 @@ Game.prototype.start = function() {
 		d.status = Dinosaure.status.RUNNING;
 	});
 
-	this.draw();
+	this.refresh();
 };
 
 
 Game.prototype.update = function() {
 	
-	if(frameCount % 8 == 0)
+	if(Game.frame % 8 == 0)
 		this.score++;
 
-	if(this.nextObsFC == frameCount) {
-		this.lastObsFC = frameCount;
-		this.nextObsFC = this.lastObsFC + floor(random(45, 130));
+	if(this.nextObsFC == Game.frame) {
+		this.lastObsFC = Game.frame;
+		this.nextObsFC = this.lastObsFC + floor(random(45, 100));
 		this.obstacles.push(new Obstacle(this));
 	}
 
-	if(this.nextCloudFC == frameCount) {
-		this.lastCloudFC = frameCount;
+	if(this.nextCloudFC == Game.frame) {
+		this.lastCloudFC = Game.frame;
 		this.nextCloudFC = this.lastCloudFC + floor(random(100, 800));
 		this.clouds.push(new Cloud(this));
 	}
@@ -194,12 +197,13 @@ Game.prototype.showScore = function() {
 	context.font = this.font;
 	context.fontSize = 'medium';
 	context.fillStyle = 'grey';
+
 	var str = this.score + "";
 	var StrScore = "";
 
 	if(this.score % 100 == 0 && this.score != 0)
-		//if(!this.sounds['checkpoint'].isPlaying())
-		//	this.sounds['checkpoint'].play();
+		if(!this.sounds['checkpoint'].paused)
+			this.sounds['checkpoint'].play();
 
 	for (var i=0; i<5-str.length; i++) { StrScore += "0"; }	StrScore += this.score; //TODO: ctx.measureText('foo'); // TextMetrics object
 
@@ -214,14 +218,13 @@ Game.prototype.showScore = function() {
 
 		context.fillText(StrScore, canvas.width - 162, 20);
 	}
-	noFill();
 };
 
 
 Game.prototype.end = function() {
 
 	this.status = Game.status.OVER;
-	//this.sounds['die'].play();
+	this.sounds['die'].play();
 	
 	if(this.score > this.highscore)
 		this.highscore = this.score;
@@ -234,8 +237,6 @@ Game.prototype.over = function() {
 	context.drawImage(this.sprites['over.replay'], 282, 75);
 	
 	this.showScore();
-
-	
 };
 
 
@@ -245,9 +246,10 @@ Game.prototype.reset = function() {
 		d.pop();
 	});
 
-	for (var i = 0; i < 12; i++) {
+	for (var i = 0; i < Manipulator.N_MAX; i++) {
 		this.dinosaures.push(new Dinosaure(new Brain(new synaptic.Architect.Perceptron(4,6,6,2))));
 	}
+
 	this.initialize(this.dinosaures);
 };
 
