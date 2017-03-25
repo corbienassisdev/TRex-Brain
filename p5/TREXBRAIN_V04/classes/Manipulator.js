@@ -10,10 +10,8 @@ function Manipulator() {
 }
 
 Manipulator.prototype.run = function() {
-	while(true) {
-		this.select();
-		this.reproduce();
-	}
+
+	this.calcFitness();
 };
 
 Manipulator.prototype.initialize = function() {
@@ -24,17 +22,6 @@ Manipulator.prototype.initialize = function() {
 		this.genomes.push(new Genome(perceptron, 0));
 	}
 };
-
-Manipulator.prototype.select = function() {
-	this.calcFitness();
-	this.selectParents();
-};
-
-Manipulator.prototype.reproduce = function() {
-	this.crossover();
-	this.mutate();
-};
-
 
 Manipulator.prototype.calcFitness = function() {
 	
@@ -50,17 +37,18 @@ Manipulator.prototype.calcFitness = function() {
 	});
 	
 	var game = new Game(dinosaures);
-	game.instance(); //fill fitness for each genome
+	game.instance(this); //fill fitness for each genome
 };
 
 Manipulator.prototype.selectParents = function() {
-
+	console.log('coucoucoucou');
+	this.crossover();
 };
 
 Manipulator.prototype.crossover = function() {
-	
+	this.mutate();
 };
 
 Manipulator.prototype.mutate = function() {
-
+	this.calcFitness();
 };

@@ -7,7 +7,7 @@ function Obstacle(game) {
 
 	var cactus = ['cactus.1', 'cactus.2', 'cactus.3', 'cactus.4', 'cactus.5', 'cactus.6'];
 
-	if(this.game.score >= 400 && floor(random(0, 3)) == 0) { //1 chance sur 3 si le score > 500
+	if(this.game.score >= 350 && floor(random(0, 3)) == 0) { //1 chance sur 3 si le score > 500
 		this.type = Obstacle.type.PTERODACTYL;
 		this.sprite = this.game.sprites['pterodactyl.fly.1'];
 		this.y = floor(random(0, 3)) * 30 + 45;
@@ -41,7 +41,7 @@ Obstacle.prototype.show = function() {
 
 	if (this.type == Obstacle.type.PTERODACTYL) {
 
-		if (floor(floorframeCount % 20) < 10) //vrai pour 5 frames puis faux, etc
+		if (floor(Game.frame % 20) < 10) //vrai pour 10 frames puis faux, etc
 			this.sprite = this.game.sprites['pterodactyl.fly.1'];
 		else
 			this.sprite = this.game.sprites['pterodactyl.fly.2'];

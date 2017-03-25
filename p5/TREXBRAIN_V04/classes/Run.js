@@ -21,7 +21,7 @@ window.onload = function() {
 
 	manip = new Manipulator();
 	manip.initialize();
-	manip.select();
+	manip.run();
 }
 
 

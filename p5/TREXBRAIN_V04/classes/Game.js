@@ -11,11 +11,11 @@ function Game(dinosaures) {
 	this.horizon = new Horizon(this);
 	this.obstacles = [];
 	this.clouds = [];
-	this.speed = 4;
+	this.speed = 6;
 	this.score = 0;
 	this.lastObsFC = Game.frame;
 	this.lastCloudFC = Game.frame;
-	this.nextObsFC = this.lastObsFC + floor(random(45, 100));//next Obstacle FrameCount
+	this.nextObsFC = this.lastObsFC + floor(random(45, 100)); //next Obstacle FrameCount
 	this.nextCloudFC = this.lastCloudFC + floor(random(100, 800)); //next Cloud FrameCount
 
 	this.initialize();
@@ -72,10 +72,11 @@ Game.prototype.initialize = function() {
 Game.prototype.instance = function() {
 
 	this.start();
+	return 'coucou';
 };
 
 
-Game.prototype.refresh = function() {
+Game.prototype.loop = function() {
 
 	switch(this.status) {
 		case Game.status.WAITING:
@@ -87,9 +88,11 @@ Game.prototype.refresh = function() {
 			break;
 		case Game.status.OVER:
 			this.over();
+			//return;
+			break;
 	}
 
-	requestAnimationFrame(this.refresh.bind(this));
+	requestAnimationFrame(this.loop.bind(this));
 	Game.frame++;
 };
 
@@ -102,7 +105,7 @@ Game.prototype.start = function() {
 		d.status = Dinosaure.status.RUNNING;
 	});
 
-	this.refresh();
+	this.loop();
 };
 
 
@@ -129,8 +132,11 @@ Game.prototype.update = function() {
 		this.obstacles[i].update(this.speed);
 
 		for (var j = this.dinosaures.length - 1; j >= 0; j--) {
-			if(this.dinosaures[j].hits(this.obstacles[i]))
+			//Si un dinosaure touche un cactus
+			if(this.dinosaures[j].hits(this.obstacles[i])) {
+				this.dinosaures.status = Dinosaure.status.CRASHED;
 				this.dinosaures.splice(j, 1);
+			}
 		}
 
 		if(this.dinosaures.length == 0)
@@ -140,6 +146,8 @@ Game.prototype.update = function() {
 			this.obstacles.splice(i, 1);
 			this.speed = this.speed * 1.01; //on augmente la vitesse
 			
+			//si un obstacle sort du canvas et que le dinosaure est vivant, 
+			//alors il l'a sauté : on incrémente sa fitness
 			this.dinosaures.forEach(function(d) {
 				d.fitness++;
 			});
@@ -161,6 +169,7 @@ Game.prototype.update = function() {
 
 
 Game.prototype.wait = function() {
+
 	this.horizon.show();
 
 	this.dinosaures.forEach(function(d) {
