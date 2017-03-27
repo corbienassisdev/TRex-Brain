@@ -1,5 +1,5 @@
 function Game(dinosaures) {
-	
+
 	this.sprites = new Object();
 	this.sounds = new Object();
 
@@ -72,7 +72,6 @@ Game.prototype.initialize = function() {
 Game.prototype.instance = function() {
 
 	this.start();
-	return 'coucou';
 };
 
 
@@ -88,7 +87,6 @@ Game.prototype.loop = function() {
 			break;
 		case Game.status.OVER:
 			this.over();
-			//return;
 			break;
 	}
 
@@ -97,7 +95,9 @@ Game.prototype.loop = function() {
 };
 
 
-Game.prototype.start = function() {
+Game.prototype.start = function(manip) {
+
+	this.manip = manip;
 
 	this.status = Game.status.RUNNING;
 
@@ -175,6 +175,7 @@ Game.prototype.wait = function() {
 	this.dinosaures.forEach(function(d) {
 		d.show();
 	});
+
 	this.showScore();
 };
 
@@ -237,6 +238,9 @@ Game.prototype.end = function() {
 	
 	if(this.score > this.highscore)
 		this.highscore = this.score;
+
+	this.manip.select();
+	this.manip.reproduce();
 };
 
 

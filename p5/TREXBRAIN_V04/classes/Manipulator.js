@@ -9,9 +9,31 @@ function Manipulator() {
 	this.matingPool = [];
 }
 
-Manipulator.prototype.run = function() {
+Manipulator.prototype.start = function() {
+	var brains = [];
+	var dinosaures = [];
 
+	this.genomes.forEach(function(genome) {
+		brains.push(new Brain(genome));
+	});
+
+	brains.forEach(function(brain) {
+		dinosaures.push(new Dinosaure(brain));
+	});
+	
+	//fill fitness for each genome
+	var game = new Game(dinosaures);
+	game.start(this);
+};
+
+Manipulator.prototype.select = function() {
 	this.calcFitness();
+	this.selectParents();
+};
+
+Manipulator.prototype.reproduce = function() {
+	this.crossover();
+	this.mutate();
 };
 
 Manipulator.prototype.initialize = function() {
@@ -25,30 +47,15 @@ Manipulator.prototype.initialize = function() {
 
 Manipulator.prototype.calcFitness = function() {
 	
-	var brains = [];
-	var dinosaures = [];
-
-	this.genomes.forEach(function(genome) {
-		brains.push(new Brain(genome));
-	});
-
-	brains.forEach(function(brain) {
-		dinosaures.push(new Dinosaure(brain));
-	});
 	
-	var game = new Game(dinosaures);
-	game.instance(this); //fill fitness for each genome
 };
 
 Manipulator.prototype.selectParents = function() {
 	console.log('coucoucoucou');
-	this.crossover();
 };
 
 Manipulator.prototype.crossover = function() {
-	this.mutate();
 };
 
 Manipulator.prototype.mutate = function() {
-	this.calcFitness();
 };
