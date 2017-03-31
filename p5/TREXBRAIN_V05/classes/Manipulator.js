@@ -10,7 +10,20 @@ function Manipulator() {
 }
 
 Manipulator.prototype.start = function() {
-	this.calcFitness();
+	var brains = [];
+	var dinosaures = [];
+
+	this.genomes.forEach(function(genome) {
+		brains.push(new Brain(genome));
+	});
+
+	brains.forEach(function(brain) {
+		dinosaures.push(new Dinosaure(brain));
+	});
+	
+	//fill fitness for each genome
+	var game = new Game(dinosaures);
+	game.start(this);
 };
 
 Manipulator.prototype.select = function() {
@@ -34,20 +47,7 @@ Manipulator.prototype.initialize = function() {
 
 Manipulator.prototype.calcFitness = function() {
 	
-	var brains = [];
-	var dinosaures = [];
-
-	this.genomes.forEach(function(genome) {
-		brains.push(new Brain(genome));
-	});
-
-	brains.forEach(function(brain) {
-		dinosaures.push(new Dinosaure(brain));
-	});
 	
-	//fill fitness for each genome
-	var game = new Game(dinosaures);
-	game.start(this);
 };
 
 Manipulator.prototype.selectParents = function() {
