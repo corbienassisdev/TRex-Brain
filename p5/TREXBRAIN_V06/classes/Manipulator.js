@@ -55,11 +55,18 @@ Manipulator.prototype.calcFitness = function() {
 
 
 Manipulator.prototype.selectParents = function() {
-	var s = "_";
-	this.genomes.forEach(function(genome) {
-		s = s + genome.fitness + " ";
+
+	//on trie nos génomes par ordre décroissant des fitness.
+	this.genomes.sort(function(g1, g2) {
+	    f1 = g1.fitness;
+	    f2 = g2.fitness;
+	    return f1>f2 ? -1 : f1<f2 ? 1:0;
 	});
-	console.log(s);
+
+	//on insère les 2 meilleurs génomes dans la mating pool
+	this.matingPool = [];
+	for(var i=0; i<2; i++)
+		this.matingPool.push(this.genomes[0]);
 };
 
 Manipulator.prototype.crossover = function() {
