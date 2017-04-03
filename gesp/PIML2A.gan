@@ -35,23 +35,23 @@
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
         <task id="5" name="Affectation des tuteurs" color="#999999" meeting="true" start="2017-01-31" duration="0" complete="0" expand="true"/>
-        <task id="17" name="Compréhension des AG" color="#33ff99" meeting="false" start="2017-02-05" duration="9" complete="0" expand="true">
+        <task id="17" name="Compréhension des AG" color="#33ff99" meeting="false" start="2017-02-05" duration="9" complete="100" expand="true">
             <depend id="23" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="23" name="Codage d'un AG basique" color="#8cb6ce" meeting="false" start="2017-02-14" duration="5" complete="0" expand="true"/>
-        <task id="25" name="Compréhension des RN" color="#33ff99" meeting="false" start="2017-02-19" duration="14" complete="0" expand="true">
+        <task id="23" name="Codage d'un AG basique" color="#8cb6ce" meeting="false" start="2017-02-14" duration="5" complete="100" expand="true"/>
+        <task id="25" name="Compréhension des RN" color="#33ff99" meeting="false" start="2017-02-19" duration="14" complete="100" expand="true">
             <depend id="28" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="28" name="Codage d'un RN basique" meeting="false" start="2017-03-05" duration="5" complete="0" expand="true"/>
+        <task id="28" name="Codage d'un RN basique" meeting="false" start="2017-03-05" duration="5" complete="100" expand="true"/>
         <task id="8" name="CDC initial" color="#ff0000" meeting="true" start="2017-01-26" duration="0" complete="0" expand="true"/>
         <task id="11" name="MàJ échéanciers" color="#ff0000" meeting="true" start="2017-03-31" duration="0" complete="0" expand="true"/>
         <task id="13" name="Etat Avancement (rapport de 3-4 pages)" color="#ff0000" meeting="true" start="2017-03-31" duration="0" complete="0" expand="true"/>
-        <task id="15" name="Implémentation du jeu" color="#3366ff" meeting="false" start="2017-01-26" duration="18" complete="0" expand="true">
+        <task id="15" name="Implémentation du jeu" color="#3366ff" meeting="false" start="2017-01-26" duration="18" complete="100" expand="true">
             <depend id="19" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="19" name="Création de l'IA !!" color="#000000" meeting="false" start="2017-02-13" duration="72" complete="0" expand="true">
-            <task id="29" name="RN" color="#33ff99" meeting="false" start="2017-02-13" duration="61" complete="0" expand="true"/>
-            <task id="30" name="AG" color="#33ff99" meeting="false" start="2017-02-13" duration="61" complete="0" expand="true"/>
+        <task id="19" name="Création de l'IA !!" color="#000000" meeting="false" start="2017-02-13" duration="72" complete="49" expand="true">
+            <task id="29" name="RN" color="#33ff99" meeting="false" start="2017-02-13" duration="61" complete="100" expand="true"/>
+            <task id="30" name="AG" color="#33ff99" meeting="false" start="2017-02-13" duration="61" complete="51" expand="true"/>
             <task id="31" name="Validation" color="#cccccc" meeting="false" start="2017-02-20" duration="65" complete="0" expand="true"/>
         </task>
         <task id="3" name="Rendu final" color="#ff0000" meeting="true" start="2017-04-27" duration="0" complete="0" expand="true"/>

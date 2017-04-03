@@ -4,7 +4,7 @@ Manipulator.N_MAX = 1; //number of genomes per generation
 function Manipulator(game) {
 
 	this.game = game;
-	this.status = Manipulator.status.INITIALIZE;
+	this.status = Manipulator.status.FITNESS;
 
 	this.nbGenerations = 0;
 
@@ -29,16 +29,6 @@ Manipulator.prototype.start = function() {
 	game.start(this);
 };
 
-Manipulator.prototype.select = function() {
-	this.calcFitness();
-	this.selectParents();
-};
-
-Manipulator.prototype.reproduce = function() {
-	this.crossover();
-	this.mutate();
-};
-
 Manipulator.prototype.initialize = function() {
 
 	//initializes a population of N_MAX genomes
@@ -50,6 +40,7 @@ Manipulator.prototype.initialize = function() {
 
 Manipulator.prototype.calcFitness = function() {
 	console.log('calcFitness');
+	this.game.reset();
 };
 
 Manipulator.prototype.selectParents = function() {
@@ -67,12 +58,14 @@ Manipulator.prototype.mutate = function() {
 Manipulator.prototype.wait = function() {
 	var game = this.game;
 	var manip = this;
-	setInterval(function() {
-		if((game.status === Game.status.OVER) && (manip.status === Manipulator.status.FITNESS))
-			{manip.selectParents();
+	setInterval(function() { //check toutes les demi-secondes si la game en cours est finie. Si oui, effectue l'algo génétique
+		if((game.status == Game.status.OVER) && (manip.status == Manipulator.status.FITNESS))
+		{
+			manip.selectParents();
 			manip.crossover();
 			manip.mutate();
-			manip.calcFitness();}
+			manip.calcFitness();
+		}
 	}, 500);
 };
 

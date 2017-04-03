@@ -19,6 +19,7 @@ function Game() {
 }
 
 Game.frame = 0;
+Game.frameId = 0;
 
 Game.prototype.setup = function() {
 
@@ -46,6 +47,7 @@ Game.prototype.setup = function() {
 	this.sounds['die'] = new Audio('resources/sounds/die.mp3');
 };
 
+
 Game.prototype.loadSprite = function(name, file) {
 
 	var path = 'resources/sprites/';
@@ -64,11 +66,20 @@ Game.prototype.initialize = function(dinosaures) {
 		d.initialize(game);
 	});
 
-	this.obstacles.push(new Obstacle(this));
+	this.horizon = new Horizon(this);
+	this.obstacles = [];
+	this.clouds = [];
+	this.speed = 6;
+	this.score = 0;
+	this.lastObsFC = Game.frame;
+	this.lastCloudFC = Game.frame;
+	this.nextObsFC = this.lastObsFC + floor(random(45, 100)); //next Obstacle FrameCount
+	this.nextCloudFC = this.lastCloudFC + floor(random(100, 800)); //next Cloud FrameCount
 };
 
-Game.prototype.loop = function() {
 
+Game.prototype.loop = function() {
+	console.log(Game.frame);
 	switch(this.status) {
 		case Game.status.WAITING:
 			this.wait();
@@ -82,8 +93,21 @@ Game.prototype.loop = function() {
 			break;
 	}
 
-	requestAnimationFrame(this.loop.bind(this));
+	if (Game.frameId != undefined) {
+		Game.frameId = requestAnimationFrame(this.loop.bind(this));
+	}
 	Game.frame++;
+};
+
+
+Game.prototype.noRequest = function() {
+	
+	window.cancelAnimationFrame(Game.frameId);
+	Game.frameId = undefined;
+};
+
+Game.prototype.request = function() {
+	Game.frameId = requestAnimationFrame(this.loop.bind(this));
 };
 
 
@@ -223,15 +247,13 @@ Game.prototype.showScore = function() {
 
 Game.prototype.end = function() {
 
+	this.noRequest();
+
 	this.status = Game.status.OVER;
 	this.sounds['die'].play();
 	
 	if(this.score > this.highscore)
 		this.highscore = this.score;
-
-	this.select();
-	this.reproduce();
-	this.reset();
 };
 
 
@@ -255,32 +277,14 @@ Game.prototype.reset = function() {
 	}
 
 	this.initialize(this.dinosaures);
-};
 
+	this.status = Game.status.RUNNING;
 
-Game.prototype.select = function() {
-	this.selectParents();
-};
+	this.dinosaures.forEach(function(d) {
+		d.status = Dinosaure.status.RUNNING;
+	});
 
-Game.prototype.reproduce = function() {
-	this.crossover();
-	this.mutate();
-};
-
-Game.prototype.calcFitness = function() {
-	console.log('calcFitness');
-};
-
-Game.prototype.selectParents = function() {
-	console.log('selectParents');
-};
-
-Game.prototype.crossover = function() {
-	console.log('crossover');
-};
-
-Game.prototype.mutate = function() {
-	console.log('mutate');
+	this.request();
 };
 
 
