@@ -19,7 +19,7 @@ function Game() {
 }
 
 Game.frame = 0;
-Game.frameId = 0;
+Game.requestId = 0;
 
 Game.prototype.setup = function() {
 
@@ -67,7 +67,7 @@ Game.prototype.initialize = function(dinosaures) {
 	});
 
 	this.horizon = new Horizon(this);
-	this.obstacles = [];
+	this.obstacles = []; 
 	this.clouds = [];
 	this.speed = 6;
 	this.score = 0;
@@ -75,11 +75,12 @@ Game.prototype.initialize = function(dinosaures) {
 	this.lastCloudFC = Game.frame;
 	this.nextObsFC = this.lastObsFC + floor(random(45, 100)); //next Obstacle FrameCount
 	this.nextCloudFC = this.lastCloudFC + floor(random(100, 800)); //next Cloud FrameCount
+	this.obstacles.push(new Obstacle(this));
 };
 
 
 Game.prototype.loop = function() {
-	console.log(Game.frame);
+	
 	switch(this.status) {
 		case Game.status.WAITING:
 			this.wait();
@@ -93,21 +94,22 @@ Game.prototype.loop = function() {
 			break;
 	}
 
-	if (Game.frameId != undefined) {
-		Game.frameId = requestAnimationFrame(this.loop.bind(this));
+	if (Game.requestId != undefined) {
+		Game.requestId = requestAnimationFrame(this.loop.bind(this));
 	}
+
 	Game.frame++;
 };
 
 
 Game.prototype.noRequest = function() {
 	
-	window.cancelAnimationFrame(Game.frameId);
-	Game.frameId = undefined;
+	window.cancelAnimationFrame(Game.requestId);
+	Game.requestId = undefined;
 };
 
 Game.prototype.request = function() {
-	Game.frameId = requestAnimationFrame(this.loop.bind(this));
+	Game.requestId = requestAnimationFrame(this.loop.bind(this));
 };
 
 
@@ -156,14 +158,16 @@ Game.prototype.update = function() {
 		if(this.dinosaures.length == 0)
 			this.end();
 
+		//L'obstacle sort du canvas à gauche
 		if(this.obstacles[i].x < -this.obstacles[i].width) {
+
 			this.obstacles.splice(i, 1);
 			this.speed = this.speed * 1.01; //on augmente la vitesse
 			
 			//si un obstacle sort du canvas et que le dinosaure est vivant, 
 			//alors il l'a sauté : on incrémente sa fitness
 			this.dinosaures.forEach(function(d) {
-				d.fitness++;
+				d.brain.genome.fitness++;
 			});
 		}
 	}
@@ -266,17 +270,9 @@ Game.prototype.over = function() {
 };
 
 
-Game.prototype.reset = function() {
+Game.prototype.reset = function(dinosaures) {
 	
-	this.dinosaures.forEach(function(d) {
-		d.pop();
-	});
-
-	for (var i = 0; i < Manipulator.N_MAX; i++) {
-		this.dinosaures.push(new Dinosaure(new Brain(new Genome(new synaptic.Architect.Perceptron(4,6,6,2), 0))));
-	}
-
-	this.initialize(this.dinosaures);
+	this.initialize(dinosaures);
 
 	this.status = Game.status.RUNNING;
 

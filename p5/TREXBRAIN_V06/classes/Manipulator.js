@@ -1,5 +1,5 @@
 Manipulator.MUTATION_RATE = 0.01;
-Manipulator.N_MAX = 1; //number of genomes per generation
+Manipulator.N_MAX = 10; //nombre de génomes par génération
 
 function Manipulator(game) {
 
@@ -12,9 +12,16 @@ function Manipulator(game) {
 	this.matingPool = [];
 }
 
-Manipulator.prototype.start = function() {
+Manipulator.prototype.initialize = function() {
+
 	var brains = [];
 	var dinosaures = [];
+
+	//initializes a population of N_MAX genomes
+	for(var i=0; i<Manipulator.N_MAX; i++) {
+		var perceptron = new synaptic.Architect.Perceptron(4,6,6,2);
+		this.genomes.push(new Genome(perceptron, 0));
+	}
 
 	this.genomes.forEach(function(genome) {
 		brains.push(new Brain(genome));
@@ -23,36 +30,44 @@ Manipulator.prototype.start = function() {
 	brains.forEach(function(brain) {
 		dinosaures.push(new Dinosaure(brain));
 	});
-	
-	//fill fitness for each genome
-	var game = new Game(dinosaures);
-	game.start(this);
+
+	this.game.initialize(dinosaures);
+	this.game.start();
 };
 
-Manipulator.prototype.initialize = function() {
-
-	//initializes a population of N_MAX genomes
-	for(var i=0; i<Manipulator.N_MAX; i++) {
-		var perceptron = new synaptic.Architect.Perceptron(4,6,6,2);
-		this.genomes.push(new Genome(perceptron, 0));
-	}
-};
 
 Manipulator.prototype.calcFitness = function() {
-	console.log('calcFitness');
-	this.game.reset();
+
+	var brains = [];
+	var dinosaures = [];
+
+	//this.genomes contient les genomes selectionnés, croisés et mutés
+	this.genomes.forEach(function(genome) {
+		brains.push(new Brain(genome));
+	});
+
+	brains.forEach(function(brain) {
+		dinosaures.push(new Dinosaure(brain));
+	});
+
+	this.game.reset(dinosaures); //la fitness de chaque génome s'incrémente au fur et à mesure des cactus sautés.
 };
 
+
 Manipulator.prototype.selectParents = function() {
-	console.log('selectParents');
+	var s = "_";
+	this.genomes.forEach(function(genome) {
+		s = s + genome.fitness + " ";
+	});
+	console.log(s);
 };
 
 Manipulator.prototype.crossover = function() {
-	console.log('crossover');
+	
 };
 
 Manipulator.prototype.mutate = function() {
-	console.log('mutate');
+	
 };
 
 Manipulator.prototype.wait = function() {

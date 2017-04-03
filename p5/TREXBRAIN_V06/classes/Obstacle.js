@@ -11,7 +11,6 @@ function Obstacle(game) {
 		this.type = Obstacle.type.PTERODACTYL;
 		this.sprite = this.game.sprites['pterodactyl.fly.1'];
 		this.y = floor(random(0, 3)) * 30 + 45;
-
 	}
 	else {
 		this.type = Obstacle.type.CACTUS;

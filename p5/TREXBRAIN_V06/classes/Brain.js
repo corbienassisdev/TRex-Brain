@@ -7,6 +7,7 @@ function Brain(genome) {
 Brain.prototype.initialize = function (dinosaure) {
 
 	this.host = dinosaure;
+	this.genome.fitness = 0;
 };
 
 Brain.prototype.update = function() {

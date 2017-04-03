@@ -16,30 +16,10 @@ window.onload = function() {
 	canvas.width = CANVAS_WIDTH;
 	canvas.height = CANVAS_HEIGHT;
 	organize();
-
-	var genomes = [];
-	var brains = [];
-	var dinosaures = [];
-
-	//initializes a population of N_MAX genomes
-	for(var i=0; i<Manipulator.N_MAX; i++) {
-		var perceptron = new synaptic.Architect.Perceptron(4,6,6,2);
-		genomes.push(new Genome(perceptron, 0));
-	}
-
-	genomes.forEach(function(genome) {
-		brains.push(new Brain(genome));
-	});
-
-	brains.forEach(function(brain) {
-		dinosaures.push(new Dinosaure(brain));
-	});
-
-	var game = new Game();
-	game.initialize(dinosaures);
-	game.start();
 	
+	var game = new Game();
 	var manip = new Manipulator(game);
+	manip.initialize();
 	manip.wait();
 }
 
