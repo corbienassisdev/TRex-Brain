@@ -1,5 +1,6 @@
-Manipulator.MUTATION_RATE = 0.01;
+Manipulator.MUTATION_RATE = 0.2;
 Manipulator.N_MAX = 10; //nombre de génomes par génération
+Manipulator.N_PARENTS = 2;
 
 function Manipulator(game) {
 
@@ -41,6 +42,14 @@ Manipulator.prototype.calcFitness = function() {
 	var brains = [];
 	var dinosaures = [];
 
+	if (this.matingPool.length > 0) {
+		this.genomes = [];
+		for(var i=0; i<this.matingPool.length; i++) {
+			this.genomes.push(this.matingPool[i]);
+		}
+		console.log(this.matingPool);
+	}
+
 	//this.genomes contient les genomes selectionnés, croisés et mutés
 	this.genomes.forEach(function(genome) {
 		brains.push(new Brain(genome));
@@ -65,16 +74,34 @@ Manipulator.prototype.selectParents = function() {
 
 	//on insère les 2 meilleurs génomes dans la mating pool
 	this.matingPool = [];
-	for(var i=0; i<2; i++)
-		this.matingPool.push(this.genomes[0]);
+	for(var i=0; i<Manipulator.N_PARENTS; i++)
+		this.matingPool.push(this.genomes[i]);
 };
 
-Manipulator.prototype.crossover = function() {
-	
+Manipulator.prototype.crossovers = function() {
+	//récupération des deux meilleurs génomes (élitisme)
+	var genA = this.matingPool[0];
+	var genB = this.matingPool[1];
+
+	//ajout de nouveaux génomes par crossing-over des deux meilleurs de la génération d'avant
+	for(var i=0; i<Manipulator.N_MAX - Manipulator.N_PARENTS; i++) {
+		var newPerceptron = Genome.crossover(genA.perceptron, genB.perceptron)
+		var newGenome = new Genome(newPerceptron, 0);
+		this.matingPool.push(newGenome);
+	}
 };
 
-Manipulator.prototype.mutate = function() {
-	
+Manipulator.prototype.mutations = function() {
+
+	var exported = this.matingPool[0].perceptron.toJSON();
+
+	//mutation de 11 génomes sur 12
+	//on garde le 12ème qui est un clone d'élite de la génération,
+	//afin d'éviter de trop régresser
+	for(var i=1; i<this.matingPool.length-1; i++) {
+		var tmp = Genome.mutate(this.matingPool[i].perceptron.toJSON());
+		this.matingPool[i].perceptron = synaptic.Network.fromJSON(tmp);
+	}
 };
 
 Manipulator.prototype.wait = function() {
@@ -84,8 +111,8 @@ Manipulator.prototype.wait = function() {
 		if((game.status == Game.status.OVER) && (manip.status == Manipulator.status.FITNESS))
 		{
 			manip.selectParents();
-			manip.crossover();
-			manip.mutate();
+			manip.crossovers();
+			manip.mutations();
 			manip.calcFitness();
 		}
 	}, 500);
