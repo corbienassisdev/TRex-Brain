@@ -6,72 +6,54 @@ function Genome(perceptron, fitness) {
 
 Genome.crossover = function(genA, genB) {
 
-	// Swap (50% prob.)
 	if (Math.random() > 0.5) {
 		var tmp = genA;
 		genA = genB;
 		genB = tmp;
 	}
 
-	// Clone network
 	genA = _.cloneDeep(genA);
 	genB = _.cloneDeep(genB);
 
-	// Cross over data keys
-	Genome.crossOverDataKey(genA.neurons, genB.neurons, 'bias');
+	Genome.crossOverDetail(genA.neurons, genB.neurons, 'bias');
 
 	return genA;
 };
 
-Genome.crossOverDataKey = function (a, b, key) {
-	var cutLocation = Math.round(a.length * Math.random());
+Genome.crossOverDetail = function (neuronsA, neuronsB, k) {
 
+	var cut = Math.round(neuronsA.length * Math.random());
 	var tmp;
-	for (var k = cutLocation; k < a.length; k++) {
-		// Swap
-		tmp = a[k][key];
-		a[k][key] = b[k][key];
-		b[k][key] = tmp;
+	for (var i=cut; i<neuronsA.length; i++) {
+		
+		tmp = neuronsA[i][k];
+		neuronsA[i][k] = neuronsB[i][k];
+		neuronsB[i][k] = tmp;
 	}
 }
 
-// Does random mutations across all
-// the biases and weights of the Networks
-// (This must be done in the JSON to
-// prevent modifying the current one)
-Genome.mutate = function (net){
+Genome.mutate = function (perceptron){
 	
-	Genome.mutateDataKeys(net.neurons, 'bias', Manipulator.MUTATION_RATE);
-	Genome.mutateDataKeys(net.connections, 'weight', Manipulator.MUTATION_RATE);
+	Genome.mutateDetail(perceptron.neurons, 'bias');
+	Genome.mutateDetail(perceptron.connections, 'weight');
 
-	return net;
+	return perceptron;
 }
 
-Genome.mutateDataKeys = function (a, key, mutationRate){
-	for (var k = 0; k < a.length; k++) {
-		// Should mutate?
-		if (Math.random() > mutationRate) {
+Genome.mutateDetail = function (noc, k){
+
+	for (var i=0; i<noc.length; i++) {
+		
+		if (Math.random() > Manipulator.MUTATION_RATE) {
 			continue;
 		}
-		a[k][key] += a[k][key] * (Math.random() - 0.5) * 3 + (Math.random() - 0.5);
+		noc[i][k] += noc[i][k] * (Math.random() - 0.5) * 3 + (Math.random() - 0.5);
 	}
 }
 
 /*
-Travail demandé en stage (1 à 2p)
 
-1. Repérer une situiation de KK ou bien dans laquelle une meilleure identification du KK aurait été b&énificiarie
+Explication mathématique globale :
+https://www.youtube.com/watch?v=bxe2T-V8XRs
 
-	- identifier une situation
-
-2. Proposer une démarche (outils/méthode) facilitatrice de KX (tant en FH qu'en TIC)
-
-	- expliciter une démarche
-
-3. Comment cette démarche (outil/méthode) se mettrait en marche (données d'entrée, calcul ou process, retour sur l'activité).
-
-4. "Teach me this" proposé
-
-	- Face à ça, on dit : j'aurais bien aimé avoir plus d'information sur tel truc
-	- limite, conclusion : je ne peux pas y arriver parce qu'il me manque ça
 */

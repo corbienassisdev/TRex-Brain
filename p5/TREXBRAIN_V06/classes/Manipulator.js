@@ -47,7 +47,6 @@ Manipulator.prototype.calcFitness = function() {
 		for(var i=0; i<this.matingPool.length; i++) {
 			this.genomes.push(this.matingPool[i]);
 		}
-		console.log(this.matingPool);
 	}
 
 	//this.genomes contient les genomes selectionnés, croisés et mutés
@@ -99,7 +98,7 @@ Manipulator.prototype.mutations = function() {
 	//on garde le 12ème qui est un clone d'élite de la génération,
 	//afin d'éviter de trop régresser
 	for(var i=1; i<this.matingPool.length-1; i++) {
-		var tmp = Genome.mutate(this.matingPool[i].perceptron.toJSON());
+		var tmp = Genome.mutate(this.matingPool[i].perceptron.toJSON()); //on passe par JSON pour retoucher facilement aux nuerons et aux connections
 		this.matingPool[i].perceptron = synaptic.Network.fromJSON(tmp);
 	}
 };
