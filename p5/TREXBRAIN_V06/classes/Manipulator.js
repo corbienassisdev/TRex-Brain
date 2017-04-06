@@ -2,9 +2,10 @@ Manipulator.MUTATION_RATE = 0.2;
 Manipulator.N_MAX = 10; //nombre de génomes par génération
 Manipulator.N_PARENTS = 2;
 
-function Manipulator(game) {
+function Manipulator(game, ui) {
 
 	this.game = game;
+	this.ui = ui;
 	this.status = Manipulator.status.FITNESS;
 
 	this.nbGenerations = 0;
@@ -109,13 +110,27 @@ Manipulator.prototype.wait = function() {
 	setInterval(function() { //check toutes les demi-secondes si la game en cours est finie. Si oui, effectue l'algo génétique
 		if((game.status == Game.status.OVER) && (manip.status == Manipulator.status.FITNESS))
 		{
+			var avgFitness = manip.averageFitness();
 			manip.selectParents();
 			manip.crossovers();
 			manip.mutations();
 			manip.calcFitness();
+			manip.nbGenerations++;
+			manip.ui.updateChart(manip.nbGenerations, avgFitness);
 		}
 	}, 500);
 };
+
+
+Manipulator.prototype.averageFitness = function() {
+	var sum = 0;
+	this.genomes.forEach(function(g) {
+		sum += g.fitness;
+	});
+
+	return sum/this.genomes.length;
+};
+
 
 Manipulator.status = {
 	INITIALIZE: 'INITIALIZING GENOMES',
@@ -124,3 +139,9 @@ Manipulator.status = {
 	CROSSOVER: 'CROSSING OVER ON BEST GENOMES',
 	MUTATION: 'MUTATING NEW GENOMES'
 };
+
+/*
+
+
+
+*/

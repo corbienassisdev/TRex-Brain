@@ -15,71 +15,36 @@ window.onload = function() {
 
 	canvas.width = CANVAS_WIDTH;
 	canvas.height = CANVAS_HEIGHT;
-	organize();
-	
+
+	Interface.organize();
+
+	var ui = new Interface();
 	var game = new Game();
-	var manip = new Manipulator(game);
+	var manip = new Manipulator(game, ui);
 	manip.initialize();
 	manip.wait();
-
-	var dps = []; // dataPoints
-
-	var chart = new CanvasJS.Chart("chartContainer",{
-		title :{
-			text: "Average fitness per generations",
-          	position: "bottom"
-		},			
-		data: [{
-			type: "spline",
-			dataPoints: dps,
-            color: "rgb(255, 0, 128)",
-		}]
-	});
-
-	var xVal = 0;
-	var yVal = 0;	
-	var updateInterval = 1000;
-	var dataLength = 0; // number of dataPoints visible at any point
-
-	var updateChart = function (count) {
-		count = count || 1;
-		// count is number of times loop runs to generate random dataPoints.
-		
-		
-      yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
-      dps.push({
-        x: xVal,
-        y: yVal
-      });
-      xVal++;
-		
-		chart.render();		
-
-	};
-
-	// generates first set of dataPoints
-	updateChart(dataLength); 
-
-	// update chart after specified time. 
-	setInterval(function(){updateChart()}, updateInterval); 
 }
 
 
 // LAYOUT FITTING //
 
 $(window).resize(function() {
-	organize();
+	Interface.organize();
 });
 
-function organize() {
+/*
+    canvas = document.getElementById('canvas');
+	context = canvas.getContext('2d');
 
-	var w_width = $(window).width();
-	$('#left').width((w_width - CANVAS_WIDTH) / 2);
-	$('#right').width((w_width - CANVAS_WIDTH) / 2);
-}
+	canvas.width = CANVAS_WIDTH;
+	canvas.height = CANVAS_HEIGHT;
 
-function sleep(miliseconds) {
-    var currentTime = new Date().getTime();
-    while (currentTime + miliseconds >= new Date().getTime()) {
-    }
-}
+	Interface.organize();
+	var ui = new Interface();
+	ui.createChart();
+	
+	var game = new Game();
+	var manip = new Manipulator(game, ui);
+	manip.initialize();
+	manip.wait();
+*/
