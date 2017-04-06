@@ -54,18 +54,19 @@ Brain.prototype.getInputs = function() {
 			if (obstaclesToReach[i].x < nearObstacle.x)
 				nearObstacle = obstaclesToReach[i];
 		}
-	}
+	}	
 
 	if(nearObstacle != null) {
 		var speed = map(this.host.game.speed, 0, 15, 0, 1); //speed (0 to 1)
 		var distance = map(nearObstacle.x, 0, 500, 0, 1); //distance form next obtstalce (0 to 1)
 		var width = map(nearObstacle.width, 0, 73, 0, 1);
-		var type = (nearObstacle.type==Obstacle.type.CACTUS)?0:1;
+		var height = (nearObstacle.type==Obstacle.type.CACTUS)?0:map(nearObstacle.y, 105, 45, 0, 1);
 
 		inputs.push(speed);
 		inputs.push(distance);
 		inputs.push(width);
-		inputs.push(type);
+		inputs.push(height);
+
 	}
 
 	return inputs;
