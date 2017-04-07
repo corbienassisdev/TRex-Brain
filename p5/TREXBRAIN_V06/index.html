@@ -6,6 +6,7 @@
 	    <link rel="icon" type="image/png" href="resources/sprites/trex_stand.png" />
 	    <!-- Bootstrap -->
 	    <link rel="stylesheet" type="text/css" href="libraries/bootstrap/css/bootstrap.css" />
+	    <link rel="stylesheet" type="text/css" href="style.css" />
 
 	    <!-- jQuery -->
 	    <script src="libraries/jquery-3.2.0.min.js" type="text/javascript"></script>
@@ -43,7 +44,7 @@
 			<div>
 				<div>
 					<h1>Evolution of fitness - Graph</h1>
-					<div id="chartContainer" style="height: 500px; width:100%;"></div>
+					<div id="chart"></div>
 				</div>
 			</div>
 		</div>
@@ -52,7 +53,7 @@
         </canvas>
 		<div id="right">
 			<div>
-				<h1>detail of each genome</h1>
+				<h1>Detail of each genome</h1>
 			</div>
 			<div>
 				<h1>Logs</h1>
@@ -60,34 +61,3 @@
 		</div>
 	</body>
 </html>
-
-<style>
-	body {
-		padding: 0; 
-		margin: 0; 
-		text-align: center; 
-	}
-
-	#left {
-		float: left;
-	}
-
-	#canvas {
-		
-	}
-
-	#right {
-		float: right;
-	}
-
-	#left > div {
-		margin: 20px;
-		padding: 15px;
-		border: 2px solid grey;
-	}
-
-	@font-face{
-		font-family:"Gameboy";
-		src:url(resources/fonts/PressStart2P.ttf);
-	}
-</style>

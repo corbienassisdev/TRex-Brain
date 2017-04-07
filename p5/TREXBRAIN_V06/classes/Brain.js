@@ -33,6 +33,10 @@ Brain.prototype.update = function() {
 		this.host.jump();
 	if(outputs[1] >= 0.5)
 		this.host.duck();
+	/*if(outputs[0] < 0.45)
+		this.host.duck();
+	if(outputs[0] > 0.55)
+		this.host.jump();*/
 };
 
 Brain.prototype.getInputs = function() {

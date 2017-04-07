@@ -1,12 +1,12 @@
 Manipulator.MUTATION_RATE = 0.2;
-Manipulator.N_MAX = 10; //nombre de génomes par génération
+Manipulator.N_MAX = 20; //nombre de génomes par génération
 Manipulator.N_PARENTS = 2;
+
 
 function Manipulator(game, ui) {
 
 	this.game = game;
 	this.ui = ui;
-	this.status = Manipulator.status.FITNESS;
 
 	this.nbGenerations = 0;
 
@@ -14,7 +14,10 @@ function Manipulator(game, ui) {
 	this.matingPool = [];
 }
 
+
 Manipulator.prototype.initialize = function() {
+
+	Interface.log('INITIALIZING');
 
 	var brains = [];
 	var dinosaures = [];
@@ -39,6 +42,8 @@ Manipulator.prototype.initialize = function() {
 
 
 Manipulator.prototype.calcFitness = function() {
+
+	Interface.log('CALCULING FITNESSES');
 
 	var brains = [];
 	var dinosaures = [];
@@ -65,6 +70,8 @@ Manipulator.prototype.calcFitness = function() {
 
 Manipulator.prototype.selectParents = function() {
 
+	Interface.log('SELECTING BEST GENOMES');
+
 	//on trie nos génomes par ordre décroissant des fitness.
 	this.genomes.sort(function(g1, g2) {
 	    f1 = g1.fitness;
@@ -78,7 +85,11 @@ Manipulator.prototype.selectParents = function() {
 		this.matingPool.push(this.genomes[i]);
 };
 
+
 Manipulator.prototype.crossovers = function() {
+
+	Interface.log('CROSSING OVER ON BEST GENOMES');
+
 	//récupération des deux meilleurs génomes (élitisme)
 	var genA = this.matingPool[0];
 	var genB = this.matingPool[1];
@@ -91,7 +102,10 @@ Manipulator.prototype.crossovers = function() {
 	}
 };
 
+
 Manipulator.prototype.mutations = function() {
+
+	Interface.log('MUTATING NEW GENOMES');
 
 	var exported = this.matingPool[0].perceptron.toJSON();
 
@@ -99,22 +113,24 @@ Manipulator.prototype.mutations = function() {
 	//on garde le 12ème qui est un clone d'élite de la génération,
 	//afin d'éviter de trop régresser
 	for(var i=1; i<this.matingPool.length-1; i++) {
-		var tmp = Genome.mutate(this.matingPool[i].perceptron.toJSON()); //on passe par JSON pour retoucher facilement aux nuerons et aux connections
+		var tmp = Genome.mutate(this.matingPool[i].perceptron.toJSON()); //on passe par JSON pour retoucher facilement aux neurones et aux connections
 		this.matingPool[i].perceptron = synaptic.Network.fromJSON(tmp);
 	}
 };
 
+
 Manipulator.prototype.wait = function() {
+
 	var game = this.game;
 	var manip = this;
-	setInterval(function() { //check toutes les demi-secondes si la game en cours est finie. Si oui, effectue l'algo génétique
-		if((game.status == Game.status.OVER) && (manip.status == Manipulator.status.FITNESS))
+	setInterval(function() { //check toutes les demi-secondes si la partie en cours est finie. Si oui, effectue l'algo génétique
+		if((game.status == Game.status.OVER))
 		{
 			var avgFitness = manip.averageFitness();
 			manip.selectParents();
 			manip.crossovers();
 			manip.mutations();
-			manip.calcFitness();
+			manip.calcFitness(); //change game status
 			manip.nbGenerations++;
 			manip.ui.updateChart(manip.nbGenerations, avgFitness);
 		}
@@ -128,20 +144,7 @@ Manipulator.prototype.averageFitness = function() {
 		sum += g.fitness;
 	});
 
-	return sum/this.genomes.length;
+	var total = this.genomes.length;
+
+	return sum/total;
 };
-
-
-Manipulator.status = {
-	INITIALIZE: 'INITIALIZING GENOMES',
-	FITNESS: 'CALCULING FITNESS',
-	SELECTION: 'SELECTING BEST GENOMES',
-	CROSSOVER: 'CROSSING OVER ON BEST GENOMES',
-	MUTATION: 'MUTATING NEW GENOMES'
-};
-
-/*
-
-
-
-*/

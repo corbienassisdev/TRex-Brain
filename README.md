@@ -2,10 +2,13 @@
 
 Recoding the T-Rex game from Chrome browser, to add an AI based on neural networks and genetic algorithms \o/
 
-#TODO :
+# TODO :
 
-*Be able to have multiples dinosaures in the same game
+* dicrease time to converge toward an optimal solution
+	- increase N_MAX
+    - locate more precisely the cross over
+    - less mutations ?	
 
-*Implements Genetic Aspects
+* Make a graphical representation for the network
 
-*Make a graphical representation for the network
+* Make a beautiful interface
