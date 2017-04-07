@@ -98,6 +98,8 @@ Game.prototype.loop = function() {
 		Game.requestId = requestAnimationFrame(this.loop.bind(this));
 	}
 
+	//Game._id = setInterval( this.loop.bind(this), 1000 / 60);
+
 	Game.frame++;
 };
 
@@ -109,6 +111,7 @@ Game.prototype.noRequest = function() {
 };
 
 Game.prototype.request = function() {
+
 	Game.requestId = requestAnimationFrame(this.loop.bind(this));
 };
 

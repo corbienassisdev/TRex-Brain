@@ -95,7 +95,8 @@ Manipulator.prototype.crossovers = function() {
 	var genB = this.matingPool[1];
 
 	//ajout de nouveaux génomes par crossing-over des deux meilleurs de la génération d'avant
-	for(var i=0; i<Manipulator.N_MAX - Manipulator.N_PARENTS; i++) {
+	for(var i = 0; i < Manipulator.N_MAX - Manipulator.N_PARENTS; i++) {
+
 		var newPerceptron = Genome.crossover(genA.perceptron, genB.perceptron)
 		var newGenome = new Genome(newPerceptron, 0);
 		this.matingPool.push(newGenome);
@@ -107,12 +108,8 @@ Manipulator.prototype.mutations = function() {
 
 	Interface.log('MUTATING NEW GENOMES');
 
-	var exported = this.matingPool[0].perceptron.toJSON();
+	for(var i = Manipulator.N_PARENTS; i < this.matingPool.length - Manipulator.N_PARENTS; i++) {
 
-	//mutation de 11 génomes sur 12
-	//on garde le 12ème qui est un clone d'élite de la génération,
-	//afin d'éviter de trop régresser
-	for(var i=1; i<this.matingPool.length-1; i++) {
 		var tmp = Genome.mutate(this.matingPool[i].perceptron.toJSON()); //on passe par JSON pour retoucher facilement aux neurones et aux connections
 		this.matingPool[i].perceptron = synaptic.Network.fromJSON(tmp);
 	}
@@ -139,6 +136,7 @@ Manipulator.prototype.wait = function() {
 
 
 Manipulator.prototype.averageFitness = function() {
+	
 	var sum = 0;
 	this.genomes.forEach(function(g) {
 		sum += g.fitness;
