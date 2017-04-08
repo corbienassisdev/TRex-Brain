@@ -64,8 +64,8 @@ Brain.prototype.getInputs = function() {
 		var speed = map(this.host.game.speed, 0, 15, 0, 1); //speed (0 to 1)
 		var distance = map(nearObstacle.x, 0, 500, 0, 1); //distance form next obtstalce (0 to 1)
 		var width = map(nearObstacle.width, 0, 73, 0, 1);
-		var height = (nearObstacle.type==Obstacle.type.CACTUS)?0:map(nearObstacle.y, 105, 45, 0, 1);
-
+		var height = (nearObstacle.type==Obstacle.type.CACTUS)?0:map(nearObstacle.y, 105, 45, 0, 1); //ne marche pas
+		
 		inputs.push(speed);
 		inputs.push(distance);
 		inputs.push(width);

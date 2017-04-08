@@ -10,6 +10,8 @@ function Dinosaure(brain) {
 	this.gravity = 0.6;
 	this.velocity = 0;
 
+	this.jumps = 0; //nombre de sauts
+
 	this.jumping = false;
 	this.ducking = false;
 	this.brainduck = false;
@@ -42,6 +44,7 @@ Dinosaure.prototype.update = function() {
 	//fin du saut
 	if(this.jumping && this.y >= this.yGround) {
 		this.jumping = false;
+		console.log(this.jumps);
 	}
 
 	//check saut
@@ -114,6 +117,7 @@ Dinosaure.prototype.jump = function() {
 		this.game.sounds['jump'].play();
 		this.jumping = true;
 		this.velocity = -10.2;
+		this.jumps++;
 	}
 };
 

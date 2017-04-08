@@ -1,5 +1,5 @@
 Manipulator.MUTATION_RATE = 0.2;
-Manipulator.N_MAX = 20; //nombre de génomes par génération
+Manipulator.N_MAX = 20 //nombre de génomes par génération
 Manipulator.N_PARENTS = 2;
 
 
@@ -124,12 +124,13 @@ Manipulator.prototype.wait = function() {
 		if((game.status == Game.status.OVER))
 		{
 			var avgFitness = manip.averageFitness();
+			var topFitness = manip.topFitness();
 			manip.selectParents();
 			manip.crossovers();
 			manip.mutations();
 			manip.calcFitness(); //change game status
 			manip.nbGenerations++;
-			manip.ui.updateChart(manip.nbGenerations, avgFitness);
+			manip.ui.updateChart(manip.nbGenerations, avgFitness, topFitness);
 		}
 	}, 500);
 };
@@ -145,4 +146,16 @@ Manipulator.prototype.averageFitness = function() {
 	var total = this.genomes.length;
 
 	return sum/total;
+};
+
+
+Manipulator.prototype.topFitness = function() {
+	
+	var top = 0;
+	this.genomes.forEach(function(g) {
+		if(g.fitness > top)
+			top = g.fitness;
+	});
+	console.log(top);
+	return top;
 };

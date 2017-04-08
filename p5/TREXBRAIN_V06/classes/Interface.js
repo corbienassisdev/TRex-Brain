@@ -1,7 +1,8 @@
 function Interface() {
-	this.dps = [];
+	this.dpsAvg = [];
+	this.dpsTop = [];
 	this.chart = this.createChart();
-	this.updateChart(0, 0); 
+	this.updateChart(0, 0, 0); 
 }
 
 Interface.prototype.createChart = function() {
@@ -28,21 +29,32 @@ Interface.prototype.createChart = function() {
 			gridColor: "rgb(210, 210, 210)",
 			minimum: 0
 		},		
-		data: [{
+		data: [
+		{
 			type: "spline",
-			dataPoints: this.dps,
+			dataPoints: this.dpsAvg,
             color: "rgb(255, 0, 128)"
+		},
+		{
+			type: "spline",
+			dataPoints: this.dpsTop,
+            color: "rgb(100, 255, 0)"
 		}]
 	});
 
 	return chart;
 };
 
-Interface.prototype.updateChart = function(x, y){
+Interface.prototype.updateChart = function(x, avg, top){
 
-	this.dps.push({
+	this.dpsAvg.push({
 		x: x,
-		y: y
+		y: avg
+	});
+
+	this.dpsTop.push({
+		x: x,
+		y: top
 	});
 		
 	this.chart.render();
