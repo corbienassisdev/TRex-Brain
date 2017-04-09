@@ -44,7 +44,6 @@ Dinosaure.prototype.update = function() {
 	//fin du saut
 	if(this.jumping && this.y >= this.yGround) {
 		this.jumping = false;
-		console.log(this.jumps);
 	}
 
 	//check saut
