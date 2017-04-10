@@ -23,6 +23,11 @@ h1, .h1 {
 	float: right;
 }
 
+#right #logs {
+	overflow-y:scroll;
+	height:150px;
+}
+
 #left > div {
 	margin: 20px;
 	padding: 15px;

@@ -67,6 +67,8 @@ Interface.prototype.updateChart = function(x, avg, top){
 
 Interface.log = function(text) {
 	//affichage dans le bloc dédié TODO
+	var div = document.getElementById('logs');
+	div.innerHTML += text + '<br />';
 	console.log(text);
 };
 
