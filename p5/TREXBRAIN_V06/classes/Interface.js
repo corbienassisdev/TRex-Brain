@@ -9,7 +9,7 @@ Interface.prototype.createChart = function() {
 
 	var chart = new CanvasJS.Chart("chart",{
 		title :{
-			text: "Average fitness per generations",
+			text: "fitnesses per generations",
 			fontSize: 16,
 			fontWeight: "normal",
 			fontStyle: "italic",
@@ -23,7 +23,7 @@ Interface.prototype.createChart = function() {
 		},
 		axisY:{
 			titleFontSize: 16,
-			title : "average fitnesses",
+			title : "fitnesses",
 			labelFontSize: 14,
 			gridThickness: 1,
 			gridColor: "rgb(210, 210, 210)",
@@ -31,14 +31,18 @@ Interface.prototype.createChart = function() {
 		},		
 		data: [
 		{
-			type: "spline",
+			type: "line", //ou spline
 			dataPoints: this.dpsAvg,
-            color: "rgb(255, 0, 128)"
+            color: "rgb(0, 119, 255)",
+            showInLegend: true,
+            legendText: "Average Fitness"
 		},
 		{
-			type: "spline",
+			type: "line",
 			dataPoints: this.dpsTop,
-            color: "rgb(100, 255, 0)"
+            color: "rgb(0, 50, 100)",
+            legendText: "Top Fitness",
+            showInLegend: true,
 		}]
 	});
 
