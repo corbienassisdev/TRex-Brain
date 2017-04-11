@@ -1,19 +1,11 @@
 body {
 	padding: 0;
 	margin: 0;
-	/*overflow: hidden;*/
+	overflow: hidden;
 }
 
-#left {
+#left, #middle, #right {
 	float : left;
-}
-
-#middle {
-	margin: auto;
-}
-
-#right {
-	float: right;
 }
 
 /********************* DATA **********************/

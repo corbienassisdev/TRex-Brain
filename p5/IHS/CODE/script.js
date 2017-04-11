@@ -1,31 +1,39 @@
 var CANVAS_HEIGHT = 150;
 var CANVAS_WIDTH  = 600;
 
-var SCREEN_HEIGHT = $(window).height();
-var SCREEN_WIDTH  = $(window).width();
 
-/* Définition de chaque width */
-$('#left'  ).width((SCREEN_WIDTH - CANVAS_WIDTH) / 2);
-$('#right' ).width(100);
-$('#middle').width(CANVAS_WIDTH);
+/* Au chargement de la page */
+$(window).ready(function() {
+	layout();
+});
 
 
-/*$('#data').width((SCREEN_WIDTH - CANVAS_WIDTH) / 2);
-$('#fits').width((SCREEN_WIDTH - CANVAS_WIDTH) / 2);
+/* Au redimensionnement de la page */
+$(window).resize(function() {
+	layout();
+});
 
-$('#logs').width(CANVAS_WIDTH);
-$('#game').width(CANVAS_WIDTH);
-$('#perc').width(CANVAS_WIDTH);
 
-$('#stat').width((SCREEN_WIDTH - CANVAS_WIDTH) / 2);
+/* Organise la vue du navigateur pour afficher les divs selon une grille propre */
+function layout() {
 
-/* Définition de chaque height */
-$('#data').height(SCREEN_HEIGHT / 2);
-$('#fits').height(SCREEN_HEIGHT / 2);
-$('#perc').height(SCREEN_HEIGHT / 2);
+	var SCREEN_HEIGHT = $(window).height();
+	var SCREEN_WIDTH  = $(window).width();
 
-$('#game').height(CANVAS_HEIGHT);
+	/* Définition de chaque width */
+	$('#left'  ).width((SCREEN_WIDTH - CANVAS_WIDTH) / 2);
+	$('#right' ).width((SCREEN_WIDTH - CANVAS_WIDTH) / 2);
+	$('#middle').width(CANVAS_WIDTH);
 
-$('#logs').height((SCREEN_HEIGHT / 2) - CANVAS_HEIGHT);
+	/* Définition de chaque height */
+	$('#data').height(SCREEN_HEIGHT / 2);
+	$('#fits').height(SCREEN_HEIGHT / 2);
+	$('#perc').height(SCREEN_HEIGHT / 2);
 
-$('#stat').height(SCREEN_HEIGHT);
+	$('#logs').height((SCREEN_HEIGHT / 2) - CANVAS_HEIGHT);
+
+	$('#game').height(CANVAS_HEIGHT);
+	$('#stat').height(SCREEN_HEIGHT);
+}
+
+
