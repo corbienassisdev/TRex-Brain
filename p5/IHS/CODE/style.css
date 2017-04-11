@@ -1,0 +1,47 @@
+body {
+	padding: 0;
+	margin: 0;
+	/*overflow: hidden;*/
+}
+
+#left {
+	float : left;
+}
+
+#middle {
+	margin: auto;
+}
+
+#right {
+	float: right;
+}
+
+/********************* DATA **********************/
+#data {
+	background-color: yellow;
+}
+
+/********************* CHART *********************/
+#fits {
+	background-color: blue;
+}
+
+/********************* LOGS **********************/
+#logs {
+	background-color: purple;
+}
+
+/********************* GAME **********************/
+#game {
+	background-color: red;
+}
+
+/********************* NETWORK *******************/
+#perc {
+	background-color: green;
+}
+
+/********************* STATUS ********************/
+#stat {
+	background-color: orange;
+}
