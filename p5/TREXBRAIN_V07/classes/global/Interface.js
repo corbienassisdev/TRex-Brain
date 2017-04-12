@@ -64,18 +64,16 @@ Interface.prototype.updateChart = function(x, avg, top){
 	this.chart.render();
 };
 
+Interface.prototype.data = function() {
+
+	//TODO trouver nom plus parlant à la fct + implémenter
+};
 
 Interface.log = function(text) {
-	//affichage dans le bloc dédié TODO
-	var div = document.getElementById('logs');
-	div.innerHTML += text + '<br />';
-	console.log(text);
+
+	var content = $('#logs').html();
+	$('#logs').html(content + text + '<br />');
 };
 
 
-Interface.organize = function() {
 
-	var w_width = $(window).width();
-	$('#left').width((w_width - CANVAS_WIDTH) / 2);
-	$('#right').width((w_width - CANVAS_WIDTH) / 2);
-};
