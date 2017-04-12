@@ -2,6 +2,7 @@ body {
 	padding: 0;
 	margin: 0;
 	overflow: hidden;
+	opacity: 0; /*on remet l'opacité à 1 au chargement de la page en JQuery */
 }
 
 #left, #middle, #right {
@@ -28,7 +29,7 @@ body {
 	background-color: red;
 }
 
-/********************* NETWORK *******************/
+/********************* PERCEPTRON ****************/
 #perc {
 	background-color: green;
 }
@@ -36,4 +37,12 @@ body {
 /********************* STATUS ********************/
 #stat {
 	background-color: orange;
+}
+
+/********************* OTHERS ********************/
+
+#checkbox {
+	position: absolute;
+	right: 0;
+	top: 0;
 }
