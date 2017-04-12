@@ -30,6 +30,18 @@ $('#checkbox').change(function() {
 	
 });
 
+/* À l'appui d'une touche du clavier */
+$(document).keypress(function(event) {
+
+	// 105 correspond à la touche I
+    if(event.charCode == 105) {
+
+    	var checked = $('#checkbox').is(':checked');
+    	$('#checkbox').prop('checked', !checked);
+    	$('#checkbox').change();
+    }
+});
+
 
 /* Organise la vue du navigateur pour afficher les divs selon une grille propre */
 function layout() {
