@@ -41,6 +41,6 @@ h1, .h1 {
 }
 
 @font-face{
-	font-family:"Gameboy";
-	src:url(resources/fonts/PressStart2P.ttf);
+	font-family: "Gameboy";
+	src: url(resources/fonts/PressStart2P.ttf);
 }

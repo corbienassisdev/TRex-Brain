@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="UTF-8">
+	    <title>PII - ENSC 2017 (corbienassisdev)</title>
+	    <link rel="stylesheet" href="style.css">
+	    <script src="libraries/jquery.js"></script>
+	    <script src="libraries/canvasjs.js"></script>
+	    <script src="libraries/p5.js"></script>
+    	<script src="libraries/synaptic.js"></script>
+    	<script src="libraries/lodash.js"></script>
+    	<!-- mes classes -->
+	    <script src="classes/global/Manipulator.js"></script>
+	    <script src="classes/global/Genome.js"></script>
+	    <script src="classes/global/Interface.js"></script>
+	    <script src="classes/game/Dinosaure.js"></script>
+	    <script src="classes/game/Brain.js"></script>
+	    <script src="classes/game/Game.js"></script>
+	    <script src="classes/game/Horizon.js"></script>
+	    <script src="classes/game/Obstacle.js"></script>
+	    <script src="classes/game/Cloud.js"></script>
+	</head>
+
+	<body>
+
+		<!-- Partie gauche -->
+		<div id="left">
+
+			<!-- Informations générales sur le jeu et la partie courante -->
+			<div id="data">
+				DATA
+			</div>
+
+			<!-- Graphique de l'évolution des fitness -->
+			<div id="fits"></div>
+		</div>
+
+		<!-- Partie centrale -->
+		<div id="middle">
+
+			<!-- Historique des logs -->
+			<div id="logs"></div>
+
+			<!-- Canvas du jeu -->
+			<div id="game">
+				<canvas id="canvas">
+		            Ouvrez le projet avec Google Chrome. 
+		            Open the project with Chrome browser.
+		        </canvas>
+			</div>
+
+			<!-- Affichage graphique du perceptron -->
+			<div id="perc">
+				NEURAL NETWORK
+			</div>
+		</div>
+
+		<!-- Partie droite -->
+		<div id="right">
+		
+			<!-- Détail de chaque génome -->
+			<div id="stat">
+				GENOMES DETAIL
+			</div>
+		</div>
+
+		<input id="checkbox" type="checkbox" title="Interface (i)">
+		
+	</body>
+</html>
+
+<script type="text/javascript" src="script.js"></script>

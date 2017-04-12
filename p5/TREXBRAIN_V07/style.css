@@ -1,0 +1,54 @@
+body {
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	opacity: 0; /* Opacité remise à 1 au chargement de la page en JQuery */
+
+	/* S'applique à tous les enfants */
+	color: rgb(50,50,50);
+	font-size: 0.8em;
+	font-family: "Courier New";
+}
+
+#left, #middle, #right {
+	float : left;
+}
+
+/********************* DATA **********************/
+#data {
+	background-color: slategrey;
+}
+
+/********************* CHART *********************/
+#fits {
+	background-color: grey;
+}
+
+/********************* LOGS **********************/
+#logs {
+	background-color: silver;
+	overflow: auto;
+}
+
+/********************* GAME **********************/
+#game {
+	
+}
+
+/********************* PERCEPTRON ****************/
+#perc {
+	background-color: dimgrey;
+}
+
+/********************* STATUS ********************/
+#stat {
+	background-color: grey;
+}
+
+/********************* OTHERS ********************/
+
+#checkbox {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
