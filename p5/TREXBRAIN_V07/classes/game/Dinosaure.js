@@ -11,6 +11,7 @@ function Dinosaure(brain) {
 	this.velocity = 0;
 
 	this.jumps = 0; //nombre de sauts
+	this.jumped = 0; //nombre de cactus sautés
 
 	this.jumping = false;
 	this.ducking = false;
@@ -173,6 +174,27 @@ Dinosaure.prototype.pixelOverlap = function(obstacle) {
 		}
     }
     return false;
+};
+
+
+Dinosaure.prototype.fitness = function() {
+	
+	var fitness;
+
+	if(this.jumps != 0)
+		fitness = this.jumps * (this.jumped / this.jumps);
+	else
+		fitness = 0;
+
+	if(fitness > 0) {
+		console.log('____________');
+		console.log(fitness);
+		console.log(this.jumps);
+		console.log(this.jumped);
+		console.log('____________');
+	}
+
+    return fitness;
 };
 
 

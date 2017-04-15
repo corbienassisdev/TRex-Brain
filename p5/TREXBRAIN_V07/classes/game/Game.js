@@ -42,9 +42,9 @@ Game.prototype.setup = function() {
 	this.loadSprite('over.replay', 'bouton_replay.png');
 	this.loadSprite('over.text', 'game_over.png');
 
-	this.sounds['checkpoint'] = new Audio('resources/sounds/checkPoint.mp3');
-	this.sounds['jump'] = new Audio('resources/sounds/jump.mp3');
-	this.sounds['die'] = new Audio('resources/sounds/die.mp3');
+	this.sounds['checkpoint'] = new Audio('resources/game/sounds/checkPoint.mp3');
+	this.sounds['jump'] = new Audio('resources/game/sounds/jump.mp3');
+	this.sounds['die'] = new Audio('resources/game/sounds/die.mp3');
 };
 
 
@@ -153,7 +153,11 @@ Game.prototype.update = function() {
 		for (var j = this.dinosaures.length - 1; j >= 0; j--) {
 			//Si un dinosaure touche un cactus
 			if(this.dinosaures[j].hits(this.obstacles[i])) {
-				this.dinosaures.status = Dinosaure.status.CRASHED;
+				
+				var d = this.dinosaures[j];
+
+				d.status = Dinosaure.status.CRASHED;
+				d.brain.genome.fitness = d.fitness(); //On calcule sa fitness
 				this.dinosaures.splice(j, 1);
 			}
 		}
@@ -167,10 +171,9 @@ Game.prototype.update = function() {
 			this.obstacles.splice(i, 1);
 			this.speed = this.speed * 1.01; //on augmente la vitesse
 			
-			//si un obstacle sort du canvas et que le dinosaure est vivant, 
-			//alors il l'a sauté : on incrémente sa fitness
+			//si un obstacle sort du canvas, on incrémente le nombre de cactus sautés (pour fitness future)
 			this.dinosaures.forEach(function(d) {
-				d.brain.genome.fitness++;
+				d.jumped++;
 			});
 		}
 	}

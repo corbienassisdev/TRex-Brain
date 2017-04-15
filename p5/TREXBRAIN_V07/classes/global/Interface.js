@@ -64,12 +64,40 @@ Interface.prototype.updateChart = function(x, avg, top){
 	this.chart.render();
 };
 
-Interface.prototype.data = function() {
 
-	//TODO trouver nom plus parlant à la fct + implémenter
+Interface.prototype.createData = function() {
+
+	var data = ['TIME', 'GENERATION', 'GENOMES PER GENERATION', 'MUTATION RATE', 'ELITE CLONES', 'DINOSAURS ALIVE', 'TOP FITNESS', 'AVERAGE FITNESS'];
+
+	var table = $('<table>');
+    
+    $.each(data, function(i) {
+		row = $('<tr>');
+
+		key = $('<td>').html(data[i] + ' : ');
+		value = $('<td>'); //vide pour l'instant
+
+		table.append(row.append(key));
+		table.append(row.append(value));
+    });
+
+    $('#data').append(table);
 };
 
-Interface.log = function(text) {
+Interface.prototype.updateData = function(name, value) {
+
+    var table = $('#data').find("table");
+    var row = $('tr:has(td:contains("' + name + '"))'); //selection de la ligne contenant le mot clé
+    row.children().last().html(value);
+};
+
+
+Interface.prototype.status = function() {
+
+	$('#stat').add('div').text('background-color');
+};
+
+Interface.prototype.log = function(text) {
 
 	var content = $('#logs').html();
 	$('#logs').html(content + text + '<br />');

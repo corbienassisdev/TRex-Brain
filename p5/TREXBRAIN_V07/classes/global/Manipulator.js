@@ -17,7 +17,13 @@ function Manipulator(game, ui) {
 
 Manipulator.prototype.initialize = function() {
 
-	Interface.log('INITIALIZING');
+	this.ui.log('INITIALIZING');
+	this.ui.createData();
+	this.ui.updateData('GENERATION', this.nbGenerations);
+	this.ui.updateData('GENOMES PER GENERATION', Manipulator.N_MAX);
+	this.ui.updateData('MUTATION RATE', Manipulator.MUTATION_RATE);
+	this.ui.updateData('MUTATION RATE', Manipulator.MUTATION_RATE);
+	this.ui.updateData('ELITE CLONES', Manipulator.N_PARENTS);
 
 	var brains = [];
 	var dinosaures = [];
@@ -43,7 +49,7 @@ Manipulator.prototype.initialize = function() {
 
 Manipulator.prototype.calcFitness = function() {
 
-	Interface.log('CALCULING FITNESSES');
+	this.ui.log('CALCULING FITNESSES');
 
 	var brains = [];
 	var dinosaures = [];
@@ -70,7 +76,7 @@ Manipulator.prototype.calcFitness = function() {
 
 Manipulator.prototype.selectParents = function() {
 
-	Interface.log('SELECTING BEST GENOMES');
+	this.ui.log('SELECTING BEST GENOMES');
 
 	//on trie nos génomes par ordre décroissant des fitness.
 	this.genomes.sort(function(g1, g2) {
@@ -88,7 +94,7 @@ Manipulator.prototype.selectParents = function() {
 
 Manipulator.prototype.crossovers = function() {
 
-	Interface.log('CROSSING OVER ON BEST GENOMES');
+	this.ui.log('CROSSING OVER ON BEST GENOMES');
 
 	//récupération des deux meilleurs génomes (élitisme)
 	var genA = this.matingPool[0];
@@ -106,7 +112,7 @@ Manipulator.prototype.crossovers = function() {
 
 Manipulator.prototype.mutations = function() {
 
-	Interface.log('MUTATING NEW GENOMES');
+	this.ui.log('MUTATING NEW GENOMES');
 
 	for(var i = Manipulator.N_PARENTS; i < this.matingPool.length - Manipulator.N_PARENTS; i++) {
 
@@ -156,6 +162,6 @@ Manipulator.prototype.topFitness = function() {
 		if(g.fitness > top)
 			top = g.fitness;
 	});
-	console.log(top);
+	
 	return top;
 };
