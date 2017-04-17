@@ -1,9 +1,11 @@
 function Interface() {
+
 	this.dpsAvg = [];
 	this.dpsTop = [];
 	this.chart = this.createChart();
 	this.updateChart(0, 0, 0); 
 }
+
 
 Interface.prototype.createChart = function() {
 
@@ -92,10 +94,29 @@ Interface.prototype.updateData = function(name, value) {
 };
 
 
-Interface.prototype.status = function() {
+Interface.prototype.createStatus = function(game) {
 
-	$('#stat').add('div').text('background-color');
+	var SCREEN_HEIGHT = $(window).height();
+
+	for(var i=0; i<Manipulator.N_MAX; i++) {
+
+		var div = $('<div>');
+		div.height(SCREEN_HEIGHT/Manipulator.N_MAX - 1);
+		div.css('border-bottom', '1px solid black');
+		$('#stat').append(div);
+	}
 };
+
+Interface.prototype.updateStatus = function(game) {
+
+	var divs = $('#stat').children();
+
+	for(var i=0; i<Manipulator.N_MAX; i++) {
+
+		divs.eq(i).css('background-color', 'red');
+	}
+};
+
 
 Interface.prototype.log = function(text) {
 

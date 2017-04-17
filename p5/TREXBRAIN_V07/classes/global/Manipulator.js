@@ -1,5 +1,5 @@
 Manipulator.MUTATION_RATE = 0.2;
-Manipulator.N_MAX = 40 //nombre de génomes par génération
+Manipulator.N_MAX = 20 //nombre de génomes par génération
 Manipulator.N_PARENTS = 2;
 
 
@@ -41,6 +41,8 @@ Manipulator.prototype.initialize = function() {
 	brains.forEach(function(brain) {
 		dinosaures.push(new Dinosaure(brain));
 	});
+
+	this.game.interface(this.ui);
 
 	this.game.initialize(dinosaures);
 	this.game.start();

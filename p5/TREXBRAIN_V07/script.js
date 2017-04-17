@@ -84,6 +84,10 @@ function layout() {
 
 	$('#game').height(CANVAS_HEIGHT);
 	$('#stat').height(SCREEN_HEIGHT);
+
+	$('#stat').children().each(function() {
+   		$(this).height(SCREEN_HEIGHT / Manipulator.N_MAX - 1);
+	});
 }
 
 

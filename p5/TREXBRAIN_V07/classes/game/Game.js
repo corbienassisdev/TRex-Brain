@@ -67,7 +67,7 @@ Game.prototype.initialize = function(dinosaures) {
 	});
 
 	this.horizon = new Horizon(this);
-	this.obstacles = []; 
+	this.obstacles = [];
 	this.clouds = [];
 	this.speed = 6;
 	this.score = 0;
@@ -97,8 +97,6 @@ Game.prototype.loop = function() {
 	if (Game.requestId != undefined) {
 		Game.requestId = requestAnimationFrame(this.loop.bind(this));
 	}
-
-	//Game._id = setInterval( this.loop.bind(this), 1000 / 60);
 
 	Game.frame++;
 };
@@ -155,10 +153,10 @@ Game.prototype.update = function() {
 			if(this.dinosaures[j].hits(this.obstacles[i])) {
 				
 				var d = this.dinosaures[j];
-
 				d.status = Dinosaure.status.CRASHED;
 				d.brain.genome.fitness = d.fitness(); //On calcule sa fitness
 				this.dinosaures.splice(j, 1);
+				this.ui.updateStatus(this);
 			}
 		}
 
@@ -287,6 +285,12 @@ Game.prototype.reset = function(dinosaures) {
 	});
 
 	this.request();
+};
+
+
+Game.prototype.interface = function(interface) {
+	this.ui = interface;
+	this.ui.createStatus(this);
 };
 
 
