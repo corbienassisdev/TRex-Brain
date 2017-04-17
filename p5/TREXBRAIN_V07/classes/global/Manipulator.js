@@ -1,5 +1,5 @@
 Manipulator.MUTATION_RATE = 0.2;
-Manipulator.N_MAX = 20 //nombre de génomes par génération
+Manipulator.N_MAX = 40 //nombre de génomes par génération
 Manipulator.N_PARENTS = 2;
 
 
@@ -19,7 +19,7 @@ Manipulator.prototype.initialize = function() {
 
 	this.ui.log('INITIALIZING');
 	this.ui.createData();
-	this.ui.updateData('GENERATION', this.nbGenerations);
+	this.ui.updateData('GENERATION NUMBER', this.nbGenerations);
 	this.ui.updateData('GENOMES PER GENERATION', Manipulator.N_MAX);
 	this.ui.updateData('MUTATION RATE', Manipulator.MUTATION_RATE);
 	this.ui.updateData('MUTATION RATE', Manipulator.MUTATION_RATE);
@@ -136,6 +136,9 @@ Manipulator.prototype.wait = function() {
 			manip.mutations();
 			manip.calcFitness(); //change game status
 			manip.nbGenerations++;
+			manip.ui.updateData('GENERATION NUMBER', manip.nbGenerations);
+			manip.ui.updateData('TOP FITNESS', topFitness);
+			manip.ui.updateData('AVERAGE FITNESS', avgFitness);
 			manip.ui.updateChart(manip.nbGenerations, avgFitness, topFitness);
 		}
 	}, 500);

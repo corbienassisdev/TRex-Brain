@@ -179,22 +179,10 @@ Dinosaure.prototype.pixelOverlap = function(obstacle) {
 
 Dinosaure.prototype.fitness = function() {
 	
-	var fitness;
-
 	if(this.jumps != 0)
-		fitness = this.jumps * (this.jumped / this.jumps);
+		return this.jumped * (this.jumped / this.jumps);
 	else
-		fitness = 0;
-
-	if(fitness > 0) {
-		console.log('____________');
-		console.log(fitness);
-		console.log(this.jumps);
-		console.log(this.jumped);
-		console.log('____________');
-	}
-
-    return fitness;
+		return 0;
 };
 
 

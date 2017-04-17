@@ -67,7 +67,7 @@ Interface.prototype.updateChart = function(x, avg, top){
 
 Interface.prototype.createData = function() {
 
-	var data = ['TIME', 'GENERATION', 'GENOMES PER GENERATION', 'MUTATION RATE', 'ELITE CLONES', 'DINOSAURS ALIVE', 'TOP FITNESS', 'AVERAGE FITNESS'];
+	var data = ['GENERATION NUMBER', 'GENOMES PER GENERATION', 'MUTATION RATE', 'ELITE CLONES', 'TOP FITNESS', 'AVERAGE FITNESS'];
 
 	var table = $('<table>');
     
@@ -88,7 +88,7 @@ Interface.prototype.updateData = function(name, value) {
 
     var table = $('#data').find("table");
     var row = $('tr:has(td:contains("' + name + '"))'); //selection de la ligne contenant le mot clé
-    row.children().last().html(value);
+    row.children().last().text(value);
 };
 
 
