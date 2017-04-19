@@ -17,6 +17,7 @@ body {
 /********************* DATA **********************/
 #data {
 	background-color: slategrey;
+	overflow: auto;
 }
 
 /********************* CHART *********************/
