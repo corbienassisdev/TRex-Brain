@@ -111,19 +111,15 @@ Interface.prototype.updateStatus = function(game) {
 
 	var divs = $('#stat').children();
 
-	/*for(var i=0; i<Manipulator.N_MAX; i++) {
-
-		if(game.dinosaures[i].status = Dinosaure.status.CRASHED)
-			divs.eq(i).css('background-color', 'rgb(223, 240, 216)');
-		else
-			divs.eq(i).css('background-color', 'rgb(242, 222, 222)');
-	}*/
-
 	game.dinosaures.forEach(function(d, i) {
-		if(d.status != Dinosaure.status.CRASHED)
+
+		if(d.status != Dinosaure.status.CRASHED) {
 			divs.eq(i).css('background-color', 'rgb(223, 240, 216)');
-		else
+			divs.eq(i).html('JUMPED : ' + d.jumped);
+		}
+		else {
 			divs.eq(i).css('background-color', 'rgb(242, 222, 222)');
+		}
 	});
 };
 

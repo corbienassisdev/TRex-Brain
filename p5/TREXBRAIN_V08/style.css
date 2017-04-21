@@ -44,6 +44,7 @@ body {
 /********************* STATUS ********************/
 #stat {
 	background-color: grey;
+	overflow: auto;
 }
 
 /********************* OTHERS ********************/

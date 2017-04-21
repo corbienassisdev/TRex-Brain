@@ -170,11 +170,12 @@ Game.prototype.update = function() {
 		if(allDead) 
 			this.end();
 
-		//L'obstacle sort du canvas à gauche
+		//L'obstacle sort complètement du canvas à gauche
 		if(this.obstacles[i].x < -this.obstacles[i].width) {
 
 			this.obstacles.splice(i, 1);
 			this.speed = this.speed * 1.01; //on augmente la vitesse
+			this.ui.updateStatus(this);
 			
 			//si un obstacle sort du canvas, on incrémente le nombre de cactus sautés (pour fitness future)
 			this.dinosaures.forEach(function(d) {
