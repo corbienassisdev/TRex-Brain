@@ -131,9 +131,7 @@ Interface.prototype.createInputs = function() {
 
 
 Interface.prototype.updateInputs = function(inputs) {
-
-	console.log(inputs);
-
+	
 	$('#perc').html(inputs[0] + '<br />' + inputs[1] + '<br />' + inputs[2] + '<br />' + inputs[3] + '<br />');
 };
 
