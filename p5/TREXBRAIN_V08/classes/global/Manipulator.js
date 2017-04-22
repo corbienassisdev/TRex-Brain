@@ -24,6 +24,7 @@ Manipulator.prototype.initialize = function() {
 	this.ui.updateData('MUTATION RATE', Manipulator.MUTATION_RATE);
 	this.ui.updateData('MUTATION RATE', Manipulator.MUTATION_RATE);
 	this.ui.updateData('ELITE CLONES', Manipulator.N_PARENTS);
+	this.ui.createInputs();
 
 	var brains = [];
 	var dinosaures = [];

@@ -185,7 +185,7 @@ Game.prototype.update = function() {
 		}
 	}
 
-	for (var i = this.clouds.length -1; i > 0; i--) {
+	for (var i = this.clouds.length - 1; i > 0; i--) {
 
 		this.clouds[i].update(this.speed);
 
@@ -197,6 +197,8 @@ Game.prototype.update = function() {
 		if(d.status != Dinosaure.status.CRASHED)
 			d.update();
 	});
+
+	this.ui.updateInputs(this.dinosaures[0].brain.getInputs());
 };
 
 
