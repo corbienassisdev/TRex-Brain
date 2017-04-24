@@ -133,6 +133,13 @@ Interface.prototype.createInputs = function() {
 Interface.prototype.updateInputs = function(inputs) {
 	
 	$('#perc').html(inputs[0] + '<br />' + inputs[1] + '<br />' + inputs[2] + '<br />' + inputs[3] + '<br />');
+	div = $('<div>');
+	div.width($('#perc').width() / 3);
+	div.height($('#perc').height() * inputs[1]);
+	div.css('background-color', 'yellow');
+	div.css('position', 'fixed');
+	div.css('bottom', '0');
+	$('#perc').append(div);
 };
 
 
