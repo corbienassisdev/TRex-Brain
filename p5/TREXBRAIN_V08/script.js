@@ -88,6 +88,10 @@ function layout() {
 	$('#stat').children().each(function() {
    		$(this).height(SCREEN_HEIGHT / Manipulator.N_MAX - 1);
 	});
+
+	$('#perc').children().each(function() {
+   		$(this).height($('#perc').height() / 4);
+	});
 }
 
 

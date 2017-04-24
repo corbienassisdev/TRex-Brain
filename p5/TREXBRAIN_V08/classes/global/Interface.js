@@ -96,31 +96,42 @@ Interface.prototype.updateData = function(name, value) {
 
 Interface.prototype.createStatus = function(game) {
 
+	$('#stat').empty();
+
 	var SCREEN_HEIGHT = $(window).height();
 
 	for(var i=0; i<Manipulator.N_MAX; i++) {
 
 		var div = $('<div>');
 		div.height(SCREEN_HEIGHT/Manipulator.N_MAX - 1);
-		div.css('border-bottom', '1px solid black');
+		div.css('border-bottom', '1px solid rgb(50,50,50)');
 		$('#stat').append(div);
 	}
-};
-
-Interface.prototype.updateStatus = function(game) {
 
 	var divs = $('#stat').children();
 
 	game.dinosaures.forEach(function(d, i) {
 
 		if(d.status != Dinosaure.status.CRASHED) {
-			divs.eq(i).css('background-color', 'rgb(223, 240, 216)');
-			divs.eq(i).html('JUMPED : ' + d.jumped);
+			divs.eq(i).html('<span style="background-color: green; color: white">&nbsp;RUNNING&nbsp;</span> | JUMPED : ' + d.jumped);
 		}
 		else {
-			divs.eq(i).css('background-color', 'rgb(242, 222, 222)');
+			divs.eq(i).html('<span style="background-color: red; color: white">&nbsp;CRASHED&nbsp;</span> | JUMPED : ' + d.jumped);
 		}
 	});
+};
+
+
+Interface.prototype.updateStatus = function(game, i) {
+
+	var divs = $('#stat').children();
+
+	if(game.dinosaures[i].status != Dinosaure.status.CRASHED) {
+		divs.eq(i).html('<span style="background-color: green; color: white">&nbsp;RUNNING&nbsp;</span> | JUMPED : ' + game.dinosaures[i].jumped);
+	}
+	else {
+		divs.eq(i).html('<span style="background-color: rgb(220,0,0); color: white">&nbsp;CRASHED&nbsp;</span> | JUMPED : ' + game.dinosaures[i].jumped);
+	}
 };
 
 
@@ -182,5 +193,6 @@ Interface.prototype.log = function(text) {
 
 	var content = $('#logs').html();
 	$('#logs').html(content + text + '<br />');
+	$("#logs").scrollTop($("#logs")[0].scrollHeight);
 };
 

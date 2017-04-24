@@ -122,7 +122,7 @@ Game.prototype.start = function() {
 		d.status = Dinosaure.status.RUNNING;
 	});
 
-	this.ui.updateStatus(this);
+	this.ui.createStatus(this);
 
 	this.loop();
 };
@@ -157,7 +157,7 @@ Game.prototype.update = function() {
 				var d = this.dinosaures[j];
 				d.status = Dinosaure.status.CRASHED;
 				d.brain.genome.fitness = d.fitness(); //On calcule sa fitness
-				this.ui.updateStatus(this);
+				this.ui.updateStatus(this, j);
 			}
 		}
 
@@ -175,12 +175,15 @@ Game.prototype.update = function() {
 
 			this.obstacles.splice(i, 1);
 			this.speed = this.speed * 1.01; //on augmente la vitesse
-			this.ui.updateStatus(this);
 			
 			//si un obstacle sort du canvas, on incrémente le nombre de cactus sautés (pour fitness future)
-			this.dinosaures.forEach(function(d) {
-				if(d.status != Dinosaure.status.CRASHED)
+			var ui = this.ui;
+			var game = this;
+			this.dinosaures.forEach(function(d, i) {
+				if(d.status != Dinosaure.status.CRASHED) {
 					d.jumped++;
+					ui.updateStatus(game, i);
+				}
 			});
 		}
 	}
@@ -298,7 +301,7 @@ Game.prototype.reset = function(dinosaures) {
 		d.status = Dinosaure.status.RUNNING;
 	});
 
-	this.ui.updateStatus(this);
+	this.ui.createStatus(this);
 
 	this.request();
 };
@@ -306,7 +309,6 @@ Game.prototype.reset = function(dinosaures) {
 
 Game.prototype.interface = function(interface) {
 	this.ui = interface;
-	this.ui.createStatus(this);
 };
 
 
