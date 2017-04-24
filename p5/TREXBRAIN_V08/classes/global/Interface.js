@@ -105,6 +105,8 @@ Interface.prototype.createStatus = function(game) {
 		var div = $('<div>');
 		div.height(SCREEN_HEIGHT/Manipulator.N_MAX - 1);
 		div.css('border-bottom', '1px solid rgb(50,50,50)');
+		div.css('line-height', div.height() + 'px');
+		div.css('vertical-align', 'middle');
 		$('#stat').append(div);
 	}
 
@@ -113,10 +115,10 @@ Interface.prototype.createStatus = function(game) {
 	game.dinosaures.forEach(function(d, i) {
 
 		if(d.status != Dinosaure.status.CRASHED) {
-			divs.eq(i).html('<span style="background-color: green; color: white">&nbsp;RUNNING&nbsp;</span> | JUMPED : ' + d.jumped);
+			divs.eq(i).html('<span style="display: inline-block; background-color: green; color: white; height: ' + divs.eq(i).height() + 'px">&nbsp;RUNNING&nbsp;</span> | JUMPED : ' + d.jumped);
 		}
 		else {
-			divs.eq(i).html('<span style="background-color: red; color: white">&nbsp;CRASHED&nbsp;</span> | JUMPED : ' + d.jumped);
+			divs.eq(i).html('<span style="display: inline-block; background-color: red; color: white; height: ' + divs.eq(i).height() + 'px">&nbsp;CRASHED&nbsp;</span> | JUMPED : ' + d.jumped);
 		}
 	});
 };
@@ -127,10 +129,10 @@ Interface.prototype.updateStatus = function(game, i) {
 	var divs = $('#stat').children();
 
 	if(game.dinosaures[i].status != Dinosaure.status.CRASHED) {
-		divs.eq(i).html('<span style="background-color: green; color: white">&nbsp;RUNNING&nbsp;</span> | JUMPED : ' + game.dinosaures[i].jumped);
+		divs.eq(i).html('<span style="display: inline-block; background-color: green; color: white; height: ' + divs.eq(i).height() + 'px">&nbsp;RUNNING&nbsp;</span> | JUMPED : ' + game.dinosaures[i].jumped);
 	}
 	else {
-		divs.eq(i).html('<span style="background-color: rgb(220,0,0); color: white">&nbsp;CRASHED&nbsp;</span> | JUMPED : ' + game.dinosaures[i].jumped);
+		divs.eq(i).html('<span style="display: inline-block; background-color: rgb(220,0,0); color: white; height: ' + divs.eq(i).height() + 'px">&nbsp;CRASHED&nbsp;</span> | JUMPED : ' + game.dinosaures[i].jumped);
 	}
 };
 
