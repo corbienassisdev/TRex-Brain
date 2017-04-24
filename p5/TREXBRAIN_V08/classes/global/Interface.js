@@ -126,20 +126,55 @@ Interface.prototype.updateStatus = function(game) {
 
 Interface.prototype.createInputs = function() {
 
-	$('#perc').html('INPUTS');
+	$('#perc').empty();
+
+	for(var i=0; i<4; i++) {
+
+		div = $('<div>');
+		div.height($('#perc').height() / 4);
+		div.width($('#perc').width() / 1.5);
+
+		switch(i) {
+			case 0:
+				div.html('SPEED:');
+				div.css('transition', 'width 0.5s'); 
+				break;
+			case 1:
+				div.html('DISTANCE:');
+				break;
+			case 2:
+				div.html('WIDTH:');
+				div.css('transition', 'width 0.5s'); 
+				break;
+			case 3:
+				div.html('HEIGHT:');
+				div.css('transition', 'width 0.5s'); 
+				break;
+		}
+		
+		div.css('background-color', 'grey');
+		div.css('border', '1px solid rgb(100,100,100)');
+		
+		$('#perc').append(div);
+	}
 };
 
 
 Interface.prototype.updateInputs = function(inputs) {
 	
-	$('#perc').html(inputs[0] + '<br />' + inputs[1] + '<br />' + inputs[2] + '<br />' + inputs[3] + '<br />');
-	div = $('<div>');
-	div.width($('#perc').width() / 3);
-	div.height($('#perc').height() * inputs[1]);
-	div.css('background-color', 'yellow');
-	div.css('position', 'fixed');
-	div.css('bottom', '0');
-	$('#perc').append(div);
+	var divs = $('#perc').children();
+
+	for(var i=0; i<inputs.length; i++) {
+
+		switch(i) {
+			case 0: divs.eq(i).html('SPEED:' + '<br />' + (inputs[i] * 100).toFixed(2) + '%'); break;
+			case 1: divs.eq(i).html('DISTANCE:' + '<br />' + (inputs[i] * 100).toFixed(2) + '%'); break;
+			case 2: divs.eq(i).html('WIDTH:' + '<br />' + (inputs[i] * 100).toFixed(2) + '%'); break;
+			case 3: divs.eq(i).html('HEIGHT:' + '<br />' + (inputs[i] * 100).toFixed(2) + '%'); break;
+		}
+
+		divs.eq(i).width($('#perc').width() * inputs[i] / 1.5);
+	}
 };
 
 
@@ -148,6 +183,4 @@ Interface.prototype.log = function(text) {
 	var content = $('#logs').html();
 	$('#logs').html(content + text + '<br />');
 };
-
-
 
