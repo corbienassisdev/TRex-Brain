@@ -57,8 +57,3 @@ Brain.prototype.getInputs = function() {
 
 	return inputs;
 };
-
-if (distance < seuil)
-	jump();
-if (altitude > 0)
-	duck();
