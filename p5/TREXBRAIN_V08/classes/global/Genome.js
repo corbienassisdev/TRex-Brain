@@ -50,10 +50,3 @@ Genome.mutateDetail = function (noc, k){
 		noc[i][k] += noc[i][k] * (Math.random() - 0.5) * 3 + (Math.random() - 0.5);
 	}
 }
-
-/*
-
-Explication mathématique globale :
-https://www.youtube.com/watch?v=bxe2T-V8XRs
-
-*/
