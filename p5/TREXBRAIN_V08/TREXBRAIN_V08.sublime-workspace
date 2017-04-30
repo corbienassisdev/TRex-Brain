@@ -1,0 +1,705 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"upd",
+				"updateStatus"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"update",
+				"updateData"
+			],
+			[
+				"N",
+				"N_PARENTS"
+			],
+			[
+				"MU",
+				"MUTATION_RATE"
+			],
+			[
+				"CANAV",
+				"CANVAS_HEIGHT"
+			],
+			[
+				"par",
+				"parentElement"
+			],
+			[
+				"C",
+				"CROSSOVER"
+			],
+			[
+				"maip",
+				"manip"
+			],
+			[
+				"up",
+				"updateChart"
+			],
+			[
+				"can",
+				"canvas2"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"mating",
+				"matingPool"
+			],
+			[
+				"matin",
+				"matingPool"
+			],
+			[
+				"mat",
+				"matingPool"
+			],
+			[
+				"cross",
+				"crossOverDataKey"
+			],
+			[
+				"s",
+				"script\tTag"
+			],
+			[
+				"ma",
+				"matingPool"
+			],
+			[
+				"m",
+				"matingPool"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"max-",
+				"max-width"
+			],
+			[
+				"frame",
+				"frameCount"
+			],
+			[
+				"canvas",
+				"canvas_width"
+			],
+			[
+				"backgroun",
+				"background-color"
+			],
+			[
+				"tRe",
+				"tRexes"
+			],
+			[
+				"sele",
+				"select"
+			],
+			[
+				"select",
+				"selectParents"
+			],
+			[
+				"Ob",
+				"obstacles"
+			],
+			[
+				"inputs",
+				"inputs"
+			],
+			[
+				"obsta",
+				"obstaclesToReach"
+			],
+			[
+				"o",
+				"obstacle"
+			],
+			[
+				"backgr",
+				"background-color"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"di",
+				"display_y"
+			],
+			[
+				"disp",
+				"display_y"
+			],
+			[
+				"getElementBy",
+				"getElementsByTagName"
+			],
+			[
+				"getEle",
+				"getElementsByTagName"
+			],
+			[
+				"champ",
+				"champDateFocus"
+			],
+			[
+				"ne",
+				"newDate"
+			],
+			[
+				"pathA",
+				"pathArray"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"le",
+				"leopard"
+			],
+			[
+				"sc",
+				"showScores"
+			],
+			[
+				"CAS",
+				"CACTUS"
+			],
+			[
+				"Cact",
+				"CACTUS"
+			],
+			[
+				"t",
+				"type"
+			],
+			[
+				"pixel",
+				"pixelCollision"
+			],
+			[
+				"pA",
+				"pA"
+			],
+			[
+				"sp",
+				"sprites"
+			],
+			[
+				"spr",
+				"sprite"
+			],
+			[
+				"next",
+				"nextObstacleFrameCount"
+			],
+			[
+				"his",
+				"highscore"
+			],
+			[
+				"proto",
+				"prototype"
+			],
+			[
+				"hi",
+				"hightlight"
+			],
+			[
+				"ob",
+				"Obstacle"
+			],
+			[
+				"Sta",
+				"STANDING"
+			],
+			[
+				"backr",
+				"background"
+			],
+			[
+				"dino",
+				"dinosaures"
+			],
+			[
+				"ini",
+				"initialiser"
+			],
+			[
+				"Parti",
+				"partieCourante"
+			],
+			[
+				"st",
+				"style\tTag"
+			],
+			[
+				"canva",
+				"canvasCtx"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V08/classes/global/Genome.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V08/classes/global/Interface.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V08/classes/game/Brain.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V08/classes/global/Manipulator.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V08/classes/game/Dinosaure.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V08/classes/game/Game.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V08/index.html",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V08/script.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V08/style.css",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V07/script.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V04/classes/Manipulator.js",
+		"/D/Programmes/wamp64/www/placy/application/views/statique/avisiter.php",
+		"/D/Programmes/wamp64/www/placy/application/views/reservation/index.php",
+		"/D/Programmes/wamp64/www/placy/js/placy/reservation.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V07/index.html",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V07/style.css",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V07/classes/game/Game.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V07/classes/global/Interface.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V07/classes/global/Manipulator.js",
+		"/D/Utilisateurs/Corentin/Bureau/Crack Microsoft Office 2016.txt",
+		"/C/Users/Corentin/AppData/Local/Temp/Temp1_Office 2016 Setup + Crack (1).zip/Office 2016 Setup + Crack/readme.txt",
+		"/D/Programmes/wamp64/www/placy/application/views/statique/activites.php",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V07/classes/game/Brain.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V07/classes/global/Genome.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V07/classes/game/Dinosaure.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V07/classes/game/Obstacle.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V07/classes/game/Cloud.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V07/classes/game/Horizon.js",
+		"/C/Users/Corentin/autoload.php",
+		"/D/Programmes/wamp64/www/placy/application/views/chambre/index.php",
+		"/D/Programmes/wamp64/www/placy/js/placy/chambres.js",
+		"/D/Programmes/wamp64/www/placy/css/placy/chambres.css",
+		"/D/Programmes/wamp64/www/placy/js/placy/propriete.js",
+		"/D/Programmes/wamp64/www/placy/js/placy/specialites.js",
+		"/D/Programmes/wamp64/www/placy/application/views/statique/specialites.php",
+		"/D/Programmes/wamp64/www/placy/application/views/statique/itineraire.php",
+		"/D/Programmes/wamp64/www/placy/css/placy/itineraire.css",
+		"/D/Utilisateurs/Corentin/Documents/workspace/visual studio/projet-csharp-teametc/NeuralNet/bin/Debug/datasetregression.txt",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V06/index.html",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V06/classes/Run.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V06/classes/Interface.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V06/style.css",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/IHS/CODE/style.css",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/IHS/CODE/script.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/IHS/CODE/index.html",
+		"/D/Programmes/wamp64/www/placy/css/placy/reservation.css",
+		"/D/Programmes/wamp64/www/placy/application/controllers/reservation.php",
+		"/D/Programmes/wamp64/www/placy/application/controllers/statique.php",
+		"/D/Programmes/wamp64/www/placy/application/views/template/nav.php",
+		"/D/Programmes/wamp64/www/placy/application/views/itineraire/index.php",
+		"/D/Programmes/wamp64/www/placy/application/controllers/contact.php",
+		"/D/Programmes/wamp64/www/placy/css/placy/contact.css",
+		"/D/Programmes/wamp64/www/placy/application/views/contact/index.php",
+		"/D/Programmes/wamp64/www/placy/application/views/template/header.php",
+		"/D/Programmes/wamp64/www/placy/js/placy/contact.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V06/classes/Brain.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V06/classes/Dinosaure.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V06/classes/Game.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V06/classes/Horizon.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V06/classes/Manipulator.js",
+		"/D/Programmes/wamp64/www/placy/application/models/sitemodel.php",
+		"/D/Programmes/wamp64/www/placy/application/controllers/itineraire.php",
+		"/D/Programmes/wamp64/www/placy/application/views/reservation/confirmation.php",
+		"/D/Utilisateurs/Corentin/Bureau/database.php",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V06/classes/Genome.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V06/classes/Obstacle.js",
+		"/D/Utilisateurs/Corentin/Bureau/infos.txt",
+		"/D/Utilisateurs/Corentin/Bureau/resolution_theorique.txt",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V06/Nouveau document texte.txt",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V06/libraries/p5.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V06/libraries/Chart.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V06/libraries/synaptic.js",
+		"/D/Utilisateurs/Corentin/Bureau/IAMDinosaur-master/IAMDinosaur-master/Learner.js",
+		"/D/Utilisateurs/Corentin/Bureau/IAMDinosaur-master/IAMDinosaur-master/index.js",
+		"/D/Utilisateurs/Corentin/Bureau/CR_tel_wilfrid.txt",
+		"/D/Utilisateurs/Corentin/Bureau/khvkv.txt",
+		"/D/Programmes/wamp64/www/placy/application/views/statique/tarifs.php",
+		"/D/Programmes/wamp64/www/placy/application/views/home/index.php",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V04/classes/Game.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V04/classes/Run.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V04/classes/Dinosaure.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V04/classes/Brain.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V04/classes/Genome.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V05/classes/Run.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V04/classes/Cloud.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V04/classes/Horizon.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V04/classes/Obstacle.js",
+		"/D/Programmes/wamp64/www/placy/application/views/statique/legal.php",
+		"/D/Programmes/wamp64/www/placy/application/controllers/home.php",
+		"/D/Programmes/wamp64/www/placy/application/controllers/chambre.php",
+		"/D/Programmes/wamp64/www/placy/application/views/statique/contact.php",
+		"/D/Programmes/wamp64/www/placy/application/views/statique/acces.php",
+		"/D/Utilisateurs/Corentin/Bureau/chambres.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V04/index.html",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V04/libraries/common.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V03/classes/Run.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V03/libraries/p5.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V03/classes/Cloud.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V04/classes/Common.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V04/libraries/synaptic.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V04/libraries/p5.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V04/classes/Library.js",
+		"/D/Utilisateurs/Corentin/Bureau/PokemonOnyx/engine/Game.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V03/classes/Brain.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V03/classes/Dinosaure.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V03/classes/Game.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V03/classes/Genome.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V03/classes/Horizon.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V03/classes/Manipulator.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V03/classes/Obstacle.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V00/classes/Brain.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V00/classes/Cloud.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V00/classes/Dinosaure.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V00/classes/Game.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V00/classes/Horizon.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V00/classes/Manipulator.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V00/classes/Obstacle.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V00/classes/Sketch.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/Interface/classes/Brain.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/Interface/classes/Cloud.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/Interface/classes/Dinosaure.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/Interface/classes/Game.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/Interface/classes/Genome.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/Interface/classes/Horizon.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/Interface/classes/Manipulator.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/Interface/classes/Obstacle.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/Interface/classes/Run.js",
+		"/D/Utilisateurs/Corentin/Documents/workspace/intelligence artificielle/p5/TREXBRAIN_V02/classes/Game.js"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"end(",
+			"dinosaures.fore",
+			"obj",
+			"GENOMES PER GENERATION",
+			"updateChart",
+			"Form",
+			"FILL",
+			"trait",
+			"nd",
+			"'",
+			"valida",
+			"validation",
+			"play",
+			"++;\n",
+			"this.dps",
+			"new synaptic",
+			"k",
+			"Learn.init",
+			"cloneDeep",
+			"crossOverDataKey",
+			"Game.frameId",
+			"Game.id",
+			"id",
+			"this.manip",
+			"genomes",
+			")",
+			"(",
+			"placeholder",
+			"400",
+			"vrai p",
+			"vrai pour",
+			"resources/sprites/",
+			"Game.frame",
+			"frameCount",
+			"brain",
+			"sounds",
+			"this.host.game.p5.",
+			"text(",
+			"this.game.p5.",
+			"frameCount",
+			"this.game.p5.",
+			"clear();",
+			"drawImage(",
+			"image(",
+			"Common",
+			"cancelAnimationFrame(Game.frame);",
+			"noLoop();",
+			"loop()",
+			"this.p5.",
+			"this.game.p5.",
+			"game",
+			"-->\n",
+			"tRex",
+			"run",
+			"initiali",
+			"p5.instance",
+			"p5",
+			"new Cloud",
+			"init",
+			"new Obsta",
+			"conso",
+			"sprites",
+			">\n",
+			"-->\n",
+			"export",
+			"lastCloudFrameCount",
+			"lastObstacleFrameCount",
+			"nextCloudFrameCount",
+			"nextObstacleFrameCount",
+			"frame",
+			"this.duck ",
+			"Dinosaure(",
+			"game",
+			"x",
+			"new Dino",
+			"personnes",
+			"0px",
+			"}\n",
+			"afterToday",
+			"compareDate",
+			"bottom",
+			"mois",
+			"entete[0]",
+			"play",
+			"call",
+			"color-nd",
+			"javas",
+			");\n",
+			"\">\n",
+			"}\n",
+			"jump",
+			"\"HI",
+			"HI ",
+			"random",
+			"\t\t\t\n",
+			"fill",
+			"back",
+			"this.status",
+			"',\n",
+			"CRASHED",
+			"lastCloudFrameCount",
+			"Coeff",
+			"speed",
+			"high",
+			"300",
+			"while",
+			";\n",
+			"case",
+			"waiting",
+			"horizonLine",
+			"text",
+			"background",
+			"\t\t\n",
+			"update(",
+			"jumping",
+			"createCanvas",
+			"canvas",
+			"obstacle",
+			"80",
+			"console.log(trex.afficherEtat());",
+			"mois",
+			"obstacle",
+			"font",
+			"h1",
+			"supress_loca",
+			"$suppress_localhost = true;",
+			"JEB"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\"",
+			"this.dpsAvg",
+			"i",
+			"Game.requestId",
+			"Game.frameId",
+			"",
+			"frameCount",
+			"Game.frame",
+			"",
+			"context.fillText(",
+			"",
+			"Game.frame",
+			"",
+			"context.clearRect(0, 0, canvas.width, canvas.height);",
+			"context.drawImage(",
+			"drawImage(",
+			"common",
+			"",
+			"cancelAnimationFrame(Game.frame);",
+			"",
+			"this",
+			"",
+			"this",
+			"host",
+			"lastCloudFC",
+			"lastObsFC",
+			"nextCloudFC",
+			"nextObsFC",
+			"m",
+			"mois"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "TREXBRAIN_V08.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
