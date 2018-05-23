@@ -1,14 +1,13 @@
 # T-Rex Brain
 
-Recoding the T-Rex game from Chrome browser, to add an AI based on neural networks and genetic algorithms \o/
+Recoding the T-Rex game from Chrome browser, then add an AI based on neural networks and genetic algorithms \o/
 
-# TODO :
+# Results
 
-* dicrease time to converge toward an optimal solution
-	- increase N_MAX
-    - locate more precisely the cross over
-    - less mutations ?	
+Working ! After 20 generations (more or less), the T-Rex learns to jump over cactus !
 
-* Make a graphical representation for the network
+# Documentation
 
-* Make a beautiful interface
+A report is available in the repository (french). 
+
+
