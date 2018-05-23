@@ -1,4 +1,4 @@
-# T-Rex Brain : an agent learns to play a game through 
+# T-Rex Brain : neural-net and genetic algorithm
 
 Recoding the T-Rex game from Chrome browser, then add an AI based on neural networks and genetic algorithms \o/
 
