@@ -24,7 +24,7 @@ Working ! After 40 generations (more or less), the T-Rex learns to jump over cac
 
 # Documentation
 
-A report is available in the repository (french).
+A report is available in the repository (french), or via [this link](https://github.com/corbienassisdev/T-Rex-Brain/blob/master/gesp/Rapport%20-%20PII.pdf).
 
 
 
