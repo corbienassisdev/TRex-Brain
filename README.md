@@ -1,8 +1,8 @@
-![alt the game](https://mayank4net.files.wordpress.com/2015/05/c6.png)
-
 # T-Rex Brain
 
 Recoding the T-Rex game from Chrome browser, then add an AI based on neural networks and genetic algorithms \o/
+
+![alt the game](https://mayank4net.files.wordpress.com/2015/05/c6.png)
 
 # Proccess
 
