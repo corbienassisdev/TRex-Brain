@@ -2,7 +2,13 @@
 
 Recoding the T-Rex game from Chrome browser, then add an AI based on neural networks and genetic algorithms \o/
 
+The project is now hosted on github pages [here](https://corbienassisdev.github.io/TRex-Brain/p5/TREXBRAIN_V08/) !
+
 ![alt the game](https://mayank4net.files.wordpress.com/2015/05/c6.png)
+
+# Instructions
+
+Click [here](https://corbienassisdev.github.io/TRex-Brain/p5/TREXBRAIN_V08/) to access the site, and just look at the dinosaurs trying to learn! You can display the user interface by pressing the I key, or by selecting the checkbox in the top-right corner. This UI displays data about the neural-net and the genetic algorithm on fly!
 
 # Proccess
 
@@ -22,9 +28,15 @@ Recoding the T-Rex game from Chrome browser, then add an AI based on neural netw
 
 Working ! After 40 generations (more or less), the T-Rex learns to jump over cactuses !
 
-# Documentation
+# Report
 
 A report is available in the repository (french), or via [this link](https://github.com/corbienassisdev/T-Rex-Brain/blob/master/gesp/Rapport%20-%20PII.pdf).
+
+---
+
+<p align=center>
+  <img src="https://ih0.redbubble.net/image.509164440.2865/flat,800x800,075,f.u2.jpg" width=50 />
+</p>
 
 
 
