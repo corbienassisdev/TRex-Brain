@@ -34,6 +34,10 @@ A report is available in the repository (french), or via [this link](https://git
 
 ---
 
+Also, the original idea of the project is from Ivan Seidel, a brasilian developer
+
+---
+
 <p align=center>
   <img src="https://ih0.redbubble.net/image.509164440.2865/flat,800x800,075,f.u2.jpg" width=50 />
 </p>
